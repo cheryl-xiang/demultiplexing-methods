@@ -1,0 +1,9 @@
+name: demux-r
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - r-base=4.4
+  - r-devtools
+  - r-tidyverse
+  - bioconductor-shortread
