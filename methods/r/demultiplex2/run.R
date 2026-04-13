@@ -1,7 +1,13 @@
-#script to run demultiplex2 on dataset_1 (GSM4904942_8donor_PBMC_AH_MULTI_matrix.csv)
+#script to run deMULTIplex2
 
-#to run in terminal: conda activate demux-r ---> Rscript methods/r/demultiplex2/run.R
+#to run in terminal: 
+#    (1) conda activate demux-r 
+#    (2) Rscript methods/r/demultiplex2/run.R dataset_# data/file_name.csv
 
+#read command line arguments
+args <- commandArgs(trailingOnly = TRUE)
+dataset_id <- args[1]
+input_file <- args[2]
 
 library(deMULTIplex2)
 library(tidyverse)
