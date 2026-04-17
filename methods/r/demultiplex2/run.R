@@ -13,8 +13,8 @@ library(deMULTIplex2)
 library(tidyverse)
 
 #data loading
-data <- read.csv('data/GSM4904942_8donor_PBMC_AH_MULTI_matrix.csv', row.names = 1)
-data <- data[, !colnames(data) %in% c('nUMI', 'nUMI_total')]
+data <- read.csv(input_file, row.names = 1)
+data <- data[, !colnames(data) %in% c('nUMI', 'nUMI_total')] #will need to check other datasets for diff col names !!
 
 #run deMULTIplex2
 res <- demultiplexTags(data)
