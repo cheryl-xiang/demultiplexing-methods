@@ -22,12 +22,12 @@ res <- demultiplexTags(data)
 #get classifications
 classifications <- res$assign_table %>%
   rownames_to_column('cell_barcode') %>%
-  select(cell_barcode, classification = final_assign)
+  select(cell_barcode, classification = final_assign)   #ask if i should just save as multiplet/singlet/negative rather than specifc barcode
 
 #save classifications
-dir.create('results/demultiplex2/dataset_1', recursive = TRUE, showWarnings = FALSE)
+dir.create(paste0('results/demultiplex2/', dataset_id), recursive = TRUE, showWarnings = FALSE)
 write.csv(classifications,
-          'results/demultiplex2/dataset_1/classifications.csv',
+          paste0('results/demultiplex2/', dataset_id, '/classifications.csv'),
           row.names = FALSE)
 
 #save summary counts
@@ -38,21 +38,26 @@ summary_counts <- classifications %>%
     TRUE ~ 'singlet'
   )) %>%
   count(classification) %>%
-  mutate(dataset = 'dataset_1', method = 'demultiplex2')
+  mutate(dataset = dataset_id, method = 'demultiplex2')
 
-write.csv(summary_counts,
-          'results/demultiplex2/dataset_1/summary.csv',
+totals <- summary_counts %>%
+  summarise(classification = 'total', n = sum(n), dataset = dataset_id, method = 'demultiplex2')
+
+summary_counts <- bind_rows(summary_counts, totals)
+
+write.csv(summary_counts, 
+          paste0('results/demultiplex2/', dataset_id, '/summary.csv'), 
           row.names = FALSE)
 
-# move assignment pdf to results folder
+#move assignment pdf to results folder
 pdf_file <- list.files(pattern = ".*assignment\\.pdf$")
 if (length(pdf_file) > 0) {
-  file.rename(pdf_file, paste0('results/demultiplex2/dataset_1/', pdf_file))
+  file.rename(pdf_file, paste0('results/demultiplex2/', dataset_id, '/', pdf_file))
 }
 
-# move Rplots.pdf to results folder
+#move Rplots.pdf to results folder
 if (file.exists('Rplots.pdf')) {
-  file.rename('Rplots.pdf', 'results/demultiplex2/dataset_1/Rplots.pdf')
+ file.rename('Rplots.pdf', paste0('results/demultiplex2/', dataset_id, '/Rplots.pdf'))
 }
 
 #print classification counts

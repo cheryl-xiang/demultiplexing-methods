@@ -7,3 +7,6 @@ dependencies:
   - r-devtools
   - r-tidyverse
   - bioconductor-shortread
+
+  # installed via install.packages: BiocManager
+  # installed via BiocManager: DropletUtils

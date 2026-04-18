@@ -1,1 +1,2 @@
-dataset_1: GSM4904942_8donor_PBMC_AH_MULTI_matrix.csv
+dataset_1 data/GSM4904942_8donor_PBMC_AH_MULTI_matrix.csv
+dataset_2 data/

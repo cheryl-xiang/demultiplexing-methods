@@ -57,6 +57,15 @@ summary = classifications.groupby('classification').size().reset_index(name='n')
 summary['dataset'] = dataset_id
 summary['method'] = 'hashsolo'
 
+total = pd.DataFrame([{
+    'classification': 'total',
+    'n': summary['n'].sum(),
+    'dataset': dataset_id,
+    'method': 'hashsolo'
+}])
+
+summary = pd.concat([summary, total], ignore_index=True)
+
 summary.to_csv(
     f'results/hashsolo/{dataset_id}/summary.csv',
     index=False
