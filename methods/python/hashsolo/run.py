@@ -4,8 +4,6 @@
 #    (1) conda activate demux-py
 #    (2) python3 methods/python/hashsolo/run.py dataset_# data/file_name.csv
 
-#python3 methods/python/hashsolo/run.py dataset_1 data/GSM4904942_8donor_PBMC_AH_MULTI_matrix.csv
-
 import sys
 import anndata
 import pandas as pd

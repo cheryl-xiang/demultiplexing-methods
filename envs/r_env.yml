@@ -6,6 +6,7 @@ dependencies:
   - r-base=4.4
   - r-devtools
   - r-tidyverse
+  - r-seurat
   - bioconductor-shortread
 
   # installed via install.packages: BiocManager

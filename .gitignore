@@ -7,6 +7,5 @@
 .RData
 .Ruserdata
 
-#python
-test_hashsolo.ipynb
-test_hasheddrops.R
+#method implementation testing
+/method_testing
