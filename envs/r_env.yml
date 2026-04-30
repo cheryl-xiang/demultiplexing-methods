@@ -6,8 +6,20 @@ dependencies:
   - r-base=4.4
   - r-devtools
   - r-tidyverse
-  - r-seurat
   - bioconductor-shortread
+  - r-dotcall64
+  - r-spam
+  - hdf5
+  - r-hdf5r
 
-  # installed via install.packages: BiocManager
-  # installed via BiocManager: DropletUtils
+  # installed via BiocManager
+  # BiocManager itself: install.packages('BiocManager', repos='https://cran.r-project.org')
+  # BiocManager::install('edgeR')
+  # BiocManager::install('DropletUtils')
+
+  # installed via devtools::install_github
+  # devtools::install_github('Gartner-Lab/deMULTIplex2')
+  # devtools::install_github(repo = 'bimberlab/cellhashR', ref = 'master', dependencies = TRUE, upgrade = 'always')
+
+  # installed via install.packages
+  # install.packages(c('Seurat', 'SeuratObject', 'Rtsne', 'sctransform'), repos='https://cran.r-project.org', dependencies=TRUE)
