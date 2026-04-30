@@ -6,3 +6,6 @@ dependencies:
   - python=3.10
   - anndata
   - scanpy
+  - pip:
+    - solo-sc
+    - GMM_Demux
