@@ -16,6 +16,7 @@ dependencies:
   # BiocManager itself: install.packages('BiocManager', repos='https://cran.r-project.org')
   # BiocManager::install('edgeR')
   # BiocManager::install('DropletUtils')
+  # BiocManager::install("demuxmix")
 
   # installed via devtools::install_github
   # devtools::install_github('Gartner-Lab/deMULTIplex2')
