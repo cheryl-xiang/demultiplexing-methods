@@ -1,8 +1,8 @@
-#script to run BFF_Raw
+#script to run BFF_Cluster
 
 #to run in terminal: 
 #    (1) conda activate demux-r 
-#    (2) Rscript methods/r/bffraw/run.R dataset_# data/file_name.csv
+#    (2) Rscript methods/r/bffcluster/run.R dataset_# data/file_name.csv
 
 #read command line arguments
 args <- commandArgs(trailingOnly = TRUE)
@@ -24,7 +24,7 @@ mat <- t(data) #expects cells as cols, barcodes as rows
 #run BFF_Raw
 res <- GenerateCellHashingCalls(
   mat,
-  methods = c('bff_raw'),
+  methods = c('bff_cluster'),
 )
 
 #get classifications
@@ -38,29 +38,31 @@ classifications <- data.frame(
 )
 
 #save classifications
-dir.create(paste0('results/bffraw/', dataset_id), recursive = TRUE, showWarnings = FALSE)
+dir.create(paste0('results/bffcluster/', dataset_id), recursive = TRUE, showWarnings = FALSE)
 write.csv(classifications,
-          paste0('results/bffraw/', dataset_id, '/classifications.csv'),
+          paste0('results/bffcluster/', dataset_id, '/classifications.csv'),
           row.names = FALSE)
 
 #save summary counts
 summary_counts <- classifications %>%
   count(classification) %>%
-  mutate(dataset = dataset_id, method = 'bff_raw')
+  mutate(dataset = dataset_id, method = 'bff_cluster')
 
 totals <- summary_counts %>%
-  summarise(classification = "total", n = sum(n), dataset = dataset_id, method = 'bff_raw')
+  summarise(classification = "total", n = sum(n), dataset = dataset_id, method = 'bff_cluster')
 
 summary_counts <- bind_rows(summary_counts, totals)
 
 write.csv(summary_counts, 
-          paste0('results/bffraw/', dataset_id, '/summary.csv'), 
+          paste0('results/bffcluster/', dataset_id, '/summary.csv'), 
           row.names = FALSE)
 
 #move plots to results folder
 if (file.exists('Rplots.pdf')) {
-  file.rename('Rplots.pdf', paste0('results/bffraw/', dataset_id, "/Rplots.pdf"))
+  file.rename('Rplots.pdf', paste0('results/bffcluster/', dataset_id, "/Rplots.pdf"))
 }
 
 #print classification counts
 print(summary_counts)
+
+#NOTE: ask if its normal not to produce negatives?
