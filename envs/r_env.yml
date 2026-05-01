@@ -21,6 +21,7 @@ dependencies:
   # installed via devtools::install_github
   # devtools::install_github('Gartner-Lab/deMULTIplex2')
   # devtools::install_github(repo = 'bimberlab/cellhashR', ref = 'master', dependencies = TRUE, upgrade = 'always')
+  # devtools::install_github('chris-mcginnis-ucsf/MULTI-seq')
 
   # installed via install.packages
   # install.packages(c('Seurat', 'SeuratObject', 'Rtsne', 'sctransform'), repos='https://cran.r-project.org', dependencies=TRUE)
