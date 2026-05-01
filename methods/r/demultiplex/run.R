@@ -27,7 +27,7 @@ for (q in seq(0.01, 0.99, by = 0.02)) {
   names(data.sweep.list)[n] <- paste0("q=", q)
 }
 
-#find best quantile
+#find best quantile  (ask about manually entering quantile)
 best.q <- 0.51
 print(paste("Using quantile:", best.q))
 

@@ -9,3 +9,4 @@ dependencies:
   - pip:
     - solo-sc
     - GMM_Demux
+    - demuxEM
