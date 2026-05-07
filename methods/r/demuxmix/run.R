@@ -2,7 +2,7 @@
 
 #to run in terminal: 
 #    (1) conda activate demux-r 
-#    (2) Rscript methods/r/demuxmix/run.R dataset_# data/file_name.csv data/dataset_#/rna/
+#    (2) Rscript methods/r/demuxmix/run.R dataset_# data/dataset_#/hto/file_name.csv data/dataset_#/rna/
 
 #read command line arguments
 args <- commandArgs(trailingOnly = TRUE)
@@ -12,21 +12,34 @@ rna_dir <- args[3]
 
 library(demuxmix)
 library(tidyverse)
+library(Matrix)
 
 #data loading
 data <- read.csv(input_file, row.names = 1)
 data <- data[, !colnames(data) %in% c('nUMI', 'nUMI_total')] #will need to check other datasets for diff col names !!
 
 mat <- t(data) #expects cells as cols, barcodes as rows
-cell_totals <- colSums(mat)
 
-#remove empty droplets
-mat <- mat[, cell_totals >= 1]
-cell_totals <- cell_totals[cell_totals >= 1]
+#load rna data
+barcodes <- read.table(file.path(rna_dir, "barcodes.tsv"), header = FALSE)$V1
+features <- read.table(file.path(rna_dir, "features.tsv"), header = FALSE)
+rna_mat <- readMM(file.path(rna_dir, "matrix.mtx"))
+rownames(rna_mat) <- features$V2
+colnames(rna_mat) <- barcodes
 
-#run demuxmix- 
-res <- demuxmix(mat, rna = cell_totals)
+#strip -1 suffix from RNA barcodes to match HTO barcodes
+colnames(rna_mat) <- sub("-1$", "", colnames(rna_mat))
 
+# compute total RNA counts per cell
+rna_counts <- colSums(rna_mat)
+
+# find common cells between HTO and RNA
+common_cells <- intersect(colnames(mat), names(rna_counts))
+mat <- mat[, common_cells, drop = FALSE]
+rna_counts <- rna_counts[common_cells]
+
+#run demuxmix
+res <- demuxmix(mat, rna = rna_counts)
 classes <- dmmClassify(res)
 
 #get classifications

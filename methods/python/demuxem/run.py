@@ -2,7 +2,7 @@
 
 #to run in terminal: 
 #    (1) conda activate demux-py
-#    (2) python3 methods/python/demuxem/run.py dataset_# data/dataset_#/file_name.csv 
+#    (2) python3 methods/python/demuxem/run.py dataset_# data/dataset_#/hto/file_name.csv
 
 import sys
 import anndata
