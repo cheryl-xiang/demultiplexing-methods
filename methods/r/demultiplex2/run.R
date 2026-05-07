@@ -14,7 +14,7 @@ library(deMULTIplex2)
 library(tidyverse)
 
 #data loading
-data <- read.csv(input_file, row.names = 1)
+data <- read.csv(input_file, row.names = 1)   #expects cols as barcodes rows a cells
 data <- data[, !colnames(data) %in% c('nUMI', 'nUMI_total')] #will need to check other datasets for diff col names !!
 
 #run deMULTIplex2
@@ -23,7 +23,20 @@ res <- demultiplexTags(data)
 #get classifications
 classifications <- res$assign_table %>%
   rownames_to_column('cell_barcode') %>%
-  select(cell_barcode, classification = final_assign)   #ask if i should just save as multiplet/singlet/negative rather than specifc barcode
+  select(cell_barcode, classification = final_assign) 
+
+#add dropped cells as negative
+all_cells <- rownames(data)
+missing_cells <- setdiff(all_cells, classifications$cell_barcode)
+if (length(missing_cells) > 0) {
+  missing_df <- data.frame(
+    cell_barcode = missing_cells,
+    classification = "negative"
+  )
+  classifications <- bind_rows(classifications, missing_df)
+}
+
+
 
 #save classifications
 dir.create(paste0('results/demultiplex2/', dataset_id), recursive = TRUE, showWarnings = FALSE)

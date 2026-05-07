@@ -17,6 +17,10 @@ datasets:
     numi_columns_to_drop:
       - nUMI
       - nUMI_Total
+    notes: >
+      - deMULTIplex2 internally filters cells before classification - missing cells
+      are reassigned as negative in output to maintain consistent total of 5159
+      across all methods
 
   dataset_2:
     geo_accession: "GSM4904930"
