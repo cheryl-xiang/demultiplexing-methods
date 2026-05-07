@@ -59,4 +59,5 @@ write.csv(summary_counts,
           paste0('results/htodemux/', dataset_id, '/summary.csv'), 
           row.names = FALSE)
 
-
+#print classification counts
+print(summary_counts)
