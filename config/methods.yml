@@ -1,0 +1,90 @@
+methods:
+  demultiplex2:
+    language: R
+    package: deMULTIplex2
+    install: "devtools::install_github('Gartner-Lab/deMULTIplex2')"
+    script: "methods/r/demultiplex2/run.R"
+    input_orientation: "tags x cells"
+    requires_rna: false
+    citation: "McGinnis et al. 2024, Genome Biology"
+
+  demultiplex:
+    language: R
+    package: deMULTIplex
+    install: "devtools::install_github('chris-mcginnis-ucsf/MULTI-seq')"
+    script: "methods/r/demultiplex/run.R"
+    input_orientation: "cells x tags"
+    requires_rna: false
+    citation: "McGinnis et al. 2019, Nature Methods"
+
+  hasheddrops:
+    language: R
+    package: DropletUtils
+    install: "BiocManager::install('DropletUtils')"
+    script: "methods/r/hasheddrops/run.R"
+    input_orientation: "tags x cells"
+    requires_rna: false
+    citation: "Lun et al. 2019, Genome Biology"
+
+  htodemux:
+    language: R
+    package: Seurat
+    install: "install.packages('Seurat')"
+    script: "methods/r/htodemux/run.R"
+    input_orientation: "tags x cells"
+    requires_rna: false
+    citation: "Stoeckius et al. 2018, Genome Biology"
+
+  demuxmix:
+    language: R
+    package: demuxmix
+    install: "install.packages('demuxmix')"
+    script: "methods/r/demuxmix/run.R"
+    input_orientation: "tags x cells"
+    requires_rna: true
+    citation: "Mysona et al. 2023"
+
+  demuxmix_naive:
+    language: R
+    package: demuxmix
+    install: "install.packages('demuxmix')"
+    script: "methods/r/demuxmix/run.R"
+    input_orientation: "tags x cells"
+    requires_rna: false
+    citation: "Mysona et al. 2023"
+
+  bff_raw:
+    language: R
+    package: cellhashR
+    install: "devtools::install_github('bimberlab/cellhashR')"
+    script: "methods/r/bff/run.R"
+    input_orientation: "tags x cells"
+    requires_rna: false
+    citation: "Boggy et al. 2022"
+
+  bff_cluster:
+    language: R
+    package: cellhashR
+    install: "devtools::install_github('bimberlab/cellhashR')"
+    script: "methods/r/bff/run.R"
+    input_orientation: "tags x cells"
+    requires_rna: false
+    citation: "Boggy et al. 2022"
+
+  hashsolo:
+    language: Python
+    package: solo-sc
+    install: "pip install solo-sc"
+    script: "methods/python/hashsolo/run.py"
+    input_orientation: "cells x tags"
+    requires_rna: false
+    citation: "Bernstein et al. 2020, Cell Systems"
+
+  gmm_demux:
+    language: Python
+    package: GMM-Demux
+    install: "pip install GMM-Demux"
+    script: "methods/python/gmm_demux/run.py"
+    input_orientation: "cells x tags"
+    requires_rna: false
+    citation: "Xin et al. 2021"

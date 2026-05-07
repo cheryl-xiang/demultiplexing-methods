@@ -2,12 +2,13 @@
 
 #to run in terminal: 
 #    (1) conda activate demux-r 
-#    (2) Rscript methods/r/demuxmix/run.R dataset_# data/file_name.csv
+#    (2) Rscript methods/r/demuxmix/run.R dataset_# data/file_name.csv data/dataset_#/rna/
 
 #read command line arguments
 args <- commandArgs(trailingOnly = TRUE)
 dataset_id <- args[1]
 input_file <- args[2]
+rna_dir <- args[3]
 
 library(demuxmix)
 library(tidyverse)

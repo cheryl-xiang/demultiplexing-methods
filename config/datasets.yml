@@ -1,0 +1,29 @@
+datasets:
+  dataset_1:
+    name: "8 Donor PBMC AH"
+    geo_accession: "GSM4904942"
+    hto_file: "data/dataset_1/hto/GSM4904942_8donor_PBMC_AH_MULTI_matrix.csv"
+    rna_dir: "data/dataset_1/rna/"
+    n_donors: 8
+    hto_columns:
+      - Bar9
+      - Bar10
+      - Bar11
+      - Bar12
+      - Bar13
+      - Bar14
+      - Bar15
+      - Bar16
+    numi_columns_to_drop:
+      - nUMI
+      - nUMI_Total
+
+  dataset_2:
+    geo_accession: "GSM4904930"
+    hto_file: "data/dataset_2/hto/GSM490493...csv"
+    rna_dir: "data/dataset_2/rna/"
+    n_donors: 
+    hto_columns:
+      - 
+    numi_columns_to_drop:
+      -
