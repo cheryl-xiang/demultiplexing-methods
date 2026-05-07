@@ -23,11 +23,20 @@ datasets:
       across all methods
 
   dataset_2:
+    name: 
     geo_accession: "GSM4904930"
     hto_file: "data/dataset_2/hto/GSM490493...csv"
-    rna_dir: "data/dataset_2/rna/"
-    n_donors: 
+    rna_dir: 
+    n_donors: 8
     hto_columns:
-      - 
+      - Bar1
+      - Bar2
+      - Bar3
+      - Bar4
+      - Bar5
+      - Bar6
+      - Bar7
+      - Bar8
     numi_columns_to_drop:
-      -
+      - nUMI
+      - nUMI_Total
