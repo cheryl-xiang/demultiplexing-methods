@@ -24,7 +24,7 @@ data = data.drop(columns=[col for col in data.columns if 'nUMI' in col])  #also 
 hto_names = ','.join(data.columns.tolist())
 
 # set up output directory
-output_dir = f"results/gmm_demux/{dataset_id}"
+output_dir = f"results/gmmdemux/{dataset_id}"
 full_report_dir = f"{output_dir}/full_report"
 os.makedirs(output_dir, exist_ok=True)
 
@@ -76,13 +76,13 @@ classifications.to_csv(f'{output_dir}/classifications.csv', index=False)
 #save summary counts
 summary = classifications.groupby('classification').size().reset_index(name='n')
 summary['dataset'] = dataset_id
-summary['method'] = 'gmm_demux'
+summary['method'] = 'gmmdemux'
 
 total = pd.DataFrame([{
     'classification': 'total',
     'n': summary['n'].sum(),
     'dataset': dataset_id,
-    'method': 'gmm_demux'
+    'method': 'gmmdemux'
 }])
 
 summary = pd.concat([summary, total], ignore_index=True)
