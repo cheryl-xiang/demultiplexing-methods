@@ -17,6 +17,9 @@ datasets:
     numi_columns_to_drop:
       - nUMI
       - nUMI_Total
+    demultiplex:
+        n_rounds: 3
+        rescue_threshold: 10
     notes: >
       - deMULTIplex2 internally filters cells before classification - missing cells
       are reassigned as negative in output to maintain consistent total of 5159
@@ -37,6 +40,9 @@ datasets:
       - Bar6
       - Bar7
       - Bar8
+    demultiplex:
+        n_rounds: 4
+        rescue_threshold: 20
     numi_columns_to_drop:
       - nUMI
       - nUMI_Total

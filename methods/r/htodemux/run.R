@@ -27,7 +27,7 @@ seurat_obj[['barcode']] <- CreateAssayObject(counts = mat)
 seurat_obj <- NormalizeData(seurat_obj, assay = 'barcode', normalization.method = "CLR")
 
 #run HTOdemux
-res <-  HTODemux(seurat_obj, assay = 'barcode', positive.quantile = 0.99)
+res <-  HTODemux(seurat_obj, assay = 'barcode', positive.quantile = 0.99, kfunc = "kmeans")
 
 #get classifications
 classifications <- data.frame(

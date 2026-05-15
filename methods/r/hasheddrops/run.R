@@ -31,6 +31,14 @@ classifications <- data.frame(
   )
 )
 
+#barcode calls
+barcode_calls <- data.frame(
+  cell_barcode = colnames(mat),
+  call = res$Best  #barcode index for all cells by default
+)
+barcode_calls$call[res$Confident == FALSE] <- 0    # negative
+barcode_calls$call[res$Doublet == TRUE] <- 1000    # doublet
+
 #save classifications
 dir.create(paste0('results/hasheddrops/', dataset_id), recursive = TRUE, showWarnings = FALSE)
 write.csv(classifications,

@@ -9,3 +9,8 @@
 
 #method implementation testing
 /method_testing
+
+#scripts for comparison
+/brian-scripts
+compare_summaries.ipynb
+

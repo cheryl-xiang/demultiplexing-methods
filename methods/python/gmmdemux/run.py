@@ -34,7 +34,8 @@ cmd = [
     '-c', input_file,        
     hto_names,
     '-f', full_report_dir,  #full report to parse 
-    '-s', output_dir        #simplified report
+    '-s', output_dir,       #simplified report
+    '-t', '0.8'
 ]
 
 subprocess.run(cmd, check=True)
@@ -59,7 +60,9 @@ classifications.columns = ['cell_barcode', 'label', 'probability']
 
 
 #match classfication names
-def map_label(label):
+def map_label(label, probability, threshold=0.8):
+    #if probability < threshold:
+        #return 'negative'
     name = label_map.get(str(int(label)), 'negative')
     if name == 'negative':
         return 'negative'
@@ -68,7 +71,9 @@ def map_label(label):
     else:
         return 'singlet'
     
-classifications['classification'] = classifications['label'].apply(map_label)
+classifications['classification'] = classifications.apply(
+    lambda row: map_label(row['label'], row['probability']), axis=1
+)
 
 #save classifications
 classifications.to_csv(f'{output_dir}/classifications.csv', index=False)
@@ -98,7 +103,7 @@ for folder in glob.glob('GMM_Demux_*'):
 if os.path.exists(full_report_dir):
     shutil.rmtree(full_report_dir)
 
-if os.path.exists(f'{output_dir}/GMM_simplified.csv'):
-    os.remove(f'{output_dir}/GMM_simplified.csv')
+#if os.path.exists(f'{output_dir}/GMM_simplified.csv'):
+    #os.remove(f'{output_dir}/GMM_simplified.csv')
 
 print(summary)

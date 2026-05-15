@@ -1,75 +1,75 @@
 classification,n,dataset,method
-multiplet,4915,dataset_2,gmmdemux
-negative,210,dataset_2,gmmdemux
-singlet,34,dataset_2,gmmdemux
+multiplet,760,dataset_2,demultiplex
+negative,1664,dataset_2,demultiplex
+singlet,2735,dataset_2,demultiplex
+total,5159,dataset_2,demultiplex
+multiplet,302,dataset_2,hashsolo
+singlet,4857,dataset_2,hashsolo
+total,5159,dataset_2,hashsolo
+multiplet,253,dataset_1,bff_raw
+negative,369,dataset_1,bff_raw
+singlet,4537,dataset_1,bff_raw
+total,5159,dataset_1,bff_raw
+multiplet,456,dataset_1,hasheddrops
+negative,365,dataset_1,hasheddrops
+singlet,4338,dataset_1,hasheddrops
+total,5159,dataset_1,hasheddrops
+multiplet,283,dataset_1,gmmdemux
+negative,329,dataset_1,gmmdemux
+singlet,4547,dataset_1,gmmdemux
+total,5159,dataset_1,gmmdemux
+multiplet,651,dataset_1,bff_cluster
+singlet,4508,dataset_1,bff_cluster
+total,5159,dataset_1,bff_cluster
+multiplet,454,dataset_2,hasheddrops
+negative,3558,dataset_2,hasheddrops
+singlet,1147,dataset_2,hasheddrops
+total,5159,dataset_2,hasheddrops
+multiplet,4814,dataset_2,htodemux
+negative,269,dataset_2,htodemux
+singlet,76,dataset_2,htodemux
+total,5159,dataset_2,htodemux
+multiplet,4929,dataset_2,gmmdemux
+negative,175,dataset_2,gmmdemux
+singlet,55,dataset_2,gmmdemux
 total,5159,dataset_2,gmmdemux
 multiplet,351,dataset_1,demuxmix
 negative,37,dataset_1,demuxmix
 singlet,4262,dataset_1,demuxmix
 total,4650,dataset_1,demuxmix
-multiplet,357,dataset_1,demuxmix naive
-negative,309,dataset_1,demuxmix naive
-singlet,4493,dataset_1,demuxmix naive
-total,5159,dataset_1,demuxmix naive
-multiplet,4235,dataset_2,demuxmix naive
-negative,909,dataset_2,demuxmix naive
-singlet,15,dataset_2,demuxmix naive
-total,5159,dataset_2,demuxmix naive
-multiplet,454,dataset_2,hasheddrops
-negative,3558,dataset_2,hasheddrops
-singlet,1147,dataset_2,hasheddrops
-total,5159,dataset_2,hasheddrops
 multiplet,983,dataset_2,bff_cluster
 negative,5,dataset_2,bff_cluster
 singlet,4171,dataset_2,bff_cluster
 total,5159,dataset_2,bff_cluster
-multiplet,4867,dataset_2,htodemux
-negative,260,dataset_2,htodemux
-singlet,32,dataset_2,htodemux
-total,5159,dataset_2,htodemux
-multiplet,431,dataset_1,hashsolo
-negative,75,dataset_1,hashsolo
-singlet,4653,dataset_1,hashsolo
-total,5159,dataset_1,hashsolo
-multiplet,633,dataset_1,htodemux
-negative,296,dataset_1,htodemux
-singlet,4230,dataset_1,htodemux
-total,5159,dataset_1,htodemux
-multiplet,302,dataset_2,hashsolo
-singlet,4857,dataset_2,hashsolo
-total,5159,dataset_2,hashsolo
-multiplet,456,dataset_1,hasheddrops
-negative,365,dataset_1,hasheddrops
-singlet,4338,dataset_1,hasheddrops
-total,5159,dataset_1,hasheddrops
-multiplet,651,dataset_1,bff_cluster
-singlet,4508,dataset_1,bff_cluster
-total,5159,dataset_1,bff_cluster
-multiplet,1473,dataset_2,demultiplex
-negative,1819,dataset_2,demultiplex
-singlet,1867,dataset_2,demultiplex
-total,5159,dataset_2,demultiplex
 multiplet,374,dataset_1,demultiplex2
 negative,294,dataset_1,demultiplex2
 singlet,4491,dataset_1,demultiplex2
 total,5159,dataset_1,demultiplex2
-multiplet,283,dataset_1,gmm_demux
-negative,329,dataset_1,gmm_demux
-singlet,4547,dataset_1,gmm_demux
-total,5159,dataset_1,gmm_demux
+multiplet,4235,dataset_2,demuxmix naive
+negative,909,dataset_2,demuxmix naive
+singlet,15,dataset_2,demuxmix naive
+total,5159,dataset_2,demuxmix naive
+multiplet,431,dataset_1,hashsolo
+negative,75,dataset_1,hashsolo
+singlet,4653,dataset_1,hashsolo
+total,5159,dataset_1,hashsolo
+multiplet,357,dataset_1,demuxmix naive
+negative,309,dataset_1,demuxmix naive
+singlet,4493,dataset_1,demuxmix naive
+total,5159,dataset_1,demuxmix naive
 multiplet,615,dataset_2,demultiplex2
 negative,914,dataset_2,demultiplex2
 singlet,3630,dataset_2,demultiplex2
 total,5159,dataset_2,demultiplex2
-multiplet,253,dataset_1,bff_raw
-negative,369,dataset_1,bff_raw
-singlet,4537,dataset_1,bff_raw
-total,5159,dataset_1,bff_raw
-multiplet,295,dataset_1,demultiplex
-negative,378,dataset_1,demultiplex
-singlet,4486,dataset_1,demultiplex
+multiplet,280,dataset_1,demultiplex
+negative,323,dataset_1,demultiplex
+singlet,4556,dataset_1,demultiplex
 total,5159,dataset_1,demultiplex
 multiplet,664,dataset_2,demuxmix
 negative,1421,dataset_2,demuxmix
 singlet,2565,dataset_2,demuxmix
 total,4650,dataset_2,demuxmix
+multiplet,530,dataset_1,htodemux
+negative,317,dataset_1,htodemux
+singlet,4312,dataset_1,htodemux
+total,5159,dataset_1,htodemux

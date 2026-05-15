@@ -1,2 +1,2 @@
-dataset_1 data/dataset_1/hto/GSM4904942_8donor_PBMC_AH_MULTI_matrix.csv data/dataset_1/rna/
-dataset_2 data/dataset_2/hto/GSM4904939_8donor_PBMC_AH_SCMK_matrix.csv data/dataset_1/rna/
+dataset_1 data/dataset_1/hto/GSM4904942_8donor_PBMC_AH_MULTI_matrix.csv data/dataset_1/rna/ 3 10
+dataset_2 data/dataset_2/hto/GSM4904939_8donor_PBMC_AH_SCMK_matrix.csv data/dataset_1/rna/ 4 20

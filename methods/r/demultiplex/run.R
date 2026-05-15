@@ -2,12 +2,15 @@
 
 #to run in terminal: 
 #    (1) conda activate demux-r 
-#    (2) Rscript methods/r/demultiplex/run.R dataset_# data/dataset_#/hto/file_name.csv
+#    (2) Rscript methods/r/demultiplex/run.R dataset_# data/dataset_#/hto/file_name.csv n_rounds rescue_threshold
 
 #read command line arguments
 args <- commandArgs(trailingOnly = TRUE)
 dataset_id <- args[1]
 input_file <- args[2]
+
+n_rounds <- as.integer(args[3])      #number of quantile sweep rounds
+rescue_threshold <- as.integer(args[4])  #class stability threshold for rescue
 
 library(deMULTIplex)
 library(tidyverse)
@@ -15,30 +18,55 @@ library(tidyverse)
 #data loading
 data <- read.csv(input_file, row.names = 1)
 data <- data[, !colnames(data) %in% c('nUMI', 'nUMI_total')] #will need to check other datasets for diff col names !!
+data.full <- as.matrix(data)  #keep full matrix for rescue step
+data <- data.full
 
 data <- as.matrix(data)
 
-#quantile sweep across thresholds
-data.sweep.list <- list()
-n <- 0
-for (q in seq(0.01, 0.99, by = 0.02)) {
-  n <- n + 1
-  data.sweep.list[[n]] <- classifyCells(data, q = q)
-  names(data.sweep.list)[n] <- paste0("q=", q)
+neg.cells <- c()
+
+#quantile sweeps
+for (round in 1:n_rounds) {
+  bar.table_sweep.list <- list()
+  n <- 0
+  for (q in seq(0.01, 0.99, by = 0.02)) {
+    n <- n + 1
+    bar.table_sweep.list[[n]] <- classifyCells(data, q = q)
+    names(bar.table_sweep.list)[n] <- paste0('q=', q)
+  }
+  threshold.results <- findThresh(call.list = bar.table_sweep.list)
+  round.calls <- classifyCells(data, q = findQ(threshold.results$res, threshold.results$extrema))
+  new.neg.cells <- names(round.calls)[which(round.calls == 'Negative')]
+  neg.cells <- unique(c(neg.cells, new.neg.cells))
+  data <- data[-which(rownames(data) %in% neg.cells), ]
+  print(paste('Round', round, 'negatives:', length(new.neg.cells)))
+  print(paste('Cells remaining:', nrow(data)))
+
+  #store last round calls
+  final.round.calls <- round.calls
 }
 
-#find best quantile  (ask about manually entering quantile)
-best.q <- 0.51
-print(paste("Using quantile:", best.q))
+#build final calls
+final.calls <- c(final.round.calls, rep('Negative', length(neg.cells)))
+names(final.calls) <- c(names(final.round.calls), neg.cells)
+
+#rescue negatives
+reclass.cells <- findReclassCells(data.full, names(final.calls)[which(final.calls == 'Negative')])
+reclass.res <- rescueCells(data.full, final.calls, reclass.cells)
+
+rescue.ind <- which(reclass.cells$ClassStability >= rescue_threshold)
+final.calls.rescued <- final.calls
+final.calls.rescued[rownames(reclass.cells)[rescue.ind]] <- reclass.cells$Reclassification[rescue.ind]
+
+#reorder rows
+final.calls.rescued <- final.calls.rescued[match(rownames(data.full), names(final.calls.rescued))]
 
 #get classifications
-final.calls <- classifyCells(data, q = best.q)
-
 classifications <- data.frame(
-  cell_barcode = names(final.calls),
+  cell_barcode = names(final.calls.rescued),
   classification = case_when(
-    final.calls == 'Doublet' ~ 'multiplet',
-    final.calls == 'Negative' ~ 'negative',
+    final.calls.rescued == 'Doublet' ~ 'multiplet',
+    final.calls.rescued == 'Negative' ~ 'negative',
     TRUE ~ 'singlet'
   )
 )
