@@ -8,9 +8,11 @@
 args <- commandArgs(trailingOnly = TRUE)
 dataset_id <- args[1]
 input_file <- args[2]
+rna_dir <- args[3]
 
 library(demuxmix)
 library(tidyverse)
+library(Matrix)
 
 #data loading
 #data loading
@@ -21,21 +23,12 @@ mat <- t(data) #expects cells as cols, barcodes as rows
 
 #load rna data
 barcodes <- read.table(file.path(rna_dir, "barcodes.tsv"), header = FALSE)$V1
-features <- read.table(file.path(rna_dir, "features.tsv"), header = FALSE)
 rna_mat <- readMM(file.path(rna_dir, "matrix.mtx"))
-rownames(rna_mat) <- features$V2
-colnames(rna_mat) <- barcodes
-
-#strip -1 suffix from RNA barcodes to match HTO barcodes
-colnames(rna_mat) <- sub("-1$", "", colnames(rna_mat))
-
-# compute total RNA counts per cell
-rna_counts <- colSums(rna_mat)
+colnames(rna_mat) <- sub("-1$", "", barcodes)
 
 # find common cells between HTO and RNA
-common_cells <- intersect(colnames(mat), names(rna_counts))
+common_cells <- intersect(colnames(mat), colnames(rna_mat))
 mat <- mat[, common_cells, drop = FALSE]
-rna_counts <- rna_counts[common_cells]
 
 #run demuxmix naive
 res <- demuxmix(mat, model = 'naive')

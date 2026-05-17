@@ -69,7 +69,7 @@ def map_label(label):
         return 'singlet'
     
 classifications['classification'] = classifications.apply(
-    lambda row: map_label(row['label'], row['probability']), axis=1
+    lambda row: map_label(row['label']), axis=1
 )
 
 #save classifications
