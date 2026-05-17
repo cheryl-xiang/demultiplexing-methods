@@ -13,10 +13,29 @@ library(demuxmix)
 library(tidyverse)
 
 #data loading
+#data loading
 data <- read.csv(input_file, row.names = 1)
 data <- data[, !colnames(data) %in% c('nUMI', 'nUMI_total')] #will need to check other datasets for diff col names !!
 
 mat <- t(data) #expects cells as cols, barcodes as rows
+
+#load rna data
+barcodes <- read.table(file.path(rna_dir, "barcodes.tsv"), header = FALSE)$V1
+features <- read.table(file.path(rna_dir, "features.tsv"), header = FALSE)
+rna_mat <- readMM(file.path(rna_dir, "matrix.mtx"))
+rownames(rna_mat) <- features$V2
+colnames(rna_mat) <- barcodes
+
+#strip -1 suffix from RNA barcodes to match HTO barcodes
+colnames(rna_mat) <- sub("-1$", "", colnames(rna_mat))
+
+# compute total RNA counts per cell
+rna_counts <- colSums(rna_mat)
+
+# find common cells between HTO and RNA
+common_cells <- intersect(colnames(mat), names(rna_counts))
+mat <- mat[, common_cells, drop = FALSE]
+rna_counts <- rna_counts[common_cells]
 
 #run demuxmix naive
 res <- demuxmix(mat, model = 'naive')

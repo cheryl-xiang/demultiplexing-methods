@@ -35,7 +35,6 @@ cmd = [
     hto_names,
     '-f', full_report_dir,  #full report to parse 
     '-s', output_dir,       #simplified report
-    '-t', '0.8'
 ]
 
 subprocess.run(cmd, check=True)
@@ -60,9 +59,7 @@ classifications.columns = ['cell_barcode', 'label', 'probability']
 
 
 #match classfication names
-def map_label(label, probability, threshold=0.8):
-    #if probability < threshold:
-        #return 'negative'
+def map_label(label):
     name = label_map.get(str(int(label)), 'negative')
     if name == 'negative':
         return 'negative'
