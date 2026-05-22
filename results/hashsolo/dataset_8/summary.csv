@@ -1,0 +1,5 @@
+classification,n,dataset,method
+multiplet,240,dataset_8,hashsolo
+negative,10,dataset_8,hashsolo
+singlet,1534,dataset_8,hashsolo
+total,1784,dataset_8,hashsolo

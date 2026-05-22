@@ -1,3 +1,8 @@
 dataset_1 data/dataset_1/hto/GSM4904942_8donor_PBMC_AH_MULTI_matrix.csv data/dataset_1/rna/ 3 10
 dataset_2 data/dataset_2/hto/GSM4904939_8donor_PBMC_AH_SCMK_matrix.csv data/dataset_1/rna/ 4 20
-dataset_3 data/dataset_3/hto/GSE211145_MULTI_barcode_count_PDX3B_winkler.csv 
+dataset_3 data/dataset_3/hto/GSE211145_MULTI_barcode_count_PDX3B_winkler.csv 7 0
+dataset_4 data/dataset_4/GSE211145_MULTI_barcode_count_PDX3A_winkler.csv 5 0
+dataset_5 data/dataset_5/GSE211145_MULTI_barcode_count_PDX1D_winkler.csv 4 0 
+dataset_6 data/dataset_6/GSE211145_MULTI_barcode_count_PDX1C_winkler.csv 4 0 
+dataset_7 data/dataset_7/GSE211145_MULTI_barcode_count_PDX1B_winkler.csv 3 0
+dataset_8 data/dataset_8/GSE211145_MULTI_barcode_count_PDX1A_winkler.csv 4 0 

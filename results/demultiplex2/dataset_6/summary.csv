@@ -1,0 +1,5 @@
+"classification","n","dataset","method"
+"multiplet",86,"dataset_6","demultiplex2"
+"negative",65,"dataset_6","demultiplex2"
+"singlet",1861,"dataset_6","demultiplex2"
+"total",2012,"dataset_6","demultiplex2"

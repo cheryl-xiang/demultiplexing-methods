@@ -17,11 +17,13 @@ library(tidyverse)
 
 #data loading
 data <- read.csv(input_file, row.names = 1)
-data <- data[, !colnames(data) %in% c('nUMI', 'nUMI_total')] #will need to check other datasets for diff col names !!
-data.full <- as.matrix(data)  #keep full matrix for rescue step
-data <- data.full
+data <- data[, !colnames(data) %in% c('nUMI', 'nUMI_total', 'nUMI_total')] #will need to check other datasets for diff col names !!
 
-data <- as.matrix(data)
+mat <- t(as.matrix(data))
+mat <- mat[rowSums(mat) > 0, ] #filter empty barcodes
+
+data.full <- mat #full matrix for rescue step
+data <- mat
 
 neg.cells <- c()
 
@@ -38,7 +40,7 @@ for (round in 1:n_rounds) {
   round.calls <- classifyCells(data, q = findQ(threshold.results$res, threshold.results$extrema))
   new.neg.cells <- names(round.calls)[which(round.calls == 'Negative')]
   neg.cells <- unique(c(neg.cells, new.neg.cells))
-  data <- data[-which(rownames(data) %in% neg.cells), ]
+  data <- data[-which(rownames(data) %in% new.neg.cells), ]
   print(paste('Round', round, 'negatives:', length(new.neg.cells)))
   print(paste('Cells remaining:', nrow(data)))
 
@@ -51,12 +53,15 @@ final.calls <- c(final.round.calls, rep('Negative', length(neg.cells)))
 names(final.calls) <- c(names(final.round.calls), neg.cells)
 
 #rescue negatives
-reclass.cells <- findReclassCells(data.full, names(final.calls)[which(final.calls == 'Negative')])
-reclass.res <- rescueCells(data.full, final.calls, reclass.cells)
-
-rescue.ind <- which(reclass.cells$ClassStability >= rescue_threshold)
-final.calls.rescued <- final.calls
-final.calls.rescued[rownames(reclass.cells)[rescue.ind]] <- reclass.cells$Reclassification[rescue.ind]
+if (rescue_threshold > 0) {
+  reclass.cells <- findReclassCells(data.full, names(final.calls)[which(final.calls == 'Negative')])
+  reclass.res <- rescueCells(data.full, final.calls, reclass.cells)
+  rescue.ind <- which(reclass.cells$ClassStability >= rescue_threshold)
+  final.calls.rescued <- final.calls
+  final.calls.rescued[rownames(reclass.cells)[rescue.ind]] <- reclass.cells$Reclassification[rescue.ind]
+} else {
+  final.calls.rescued <- final.calls
+}
 
 #reorder rows
 final.calls.rescued <- final.calls.rescued[match(rownames(data.full), names(final.calls.rescued))]

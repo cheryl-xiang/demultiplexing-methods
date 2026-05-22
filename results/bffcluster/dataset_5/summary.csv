@@ -1,0 +1,5 @@
+"classification","n","dataset","method"
+"multiplet",129,"dataset_5","bff_cluster"
+"negative",6,"dataset_5","bff_cluster"
+"singlet",1782,"dataset_5","bff_cluster"
+"total",1917,"dataset_5","bff_cluster"

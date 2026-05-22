@@ -17,24 +17,28 @@ data <- read.csv(input_file, row.names = 1)
 data <- data[, !colnames(data) %in% c('nUMI', 'nUMI_total')]  #will need to check other datasets for diff col names !!
 
 mat <- t(data)     #expects barcodes as rows, cells as cols
+mat <- mat[rowSums(mat) > 0, ]
+mat <- mat[, colSums(mat) > 10]
 
-seurat_obj <- CreateSeuratObject(counts = mat)
+mat_sparse <- Matrix::Matrix(mat, sparse = TRUE)
+
+seurat_obj <- CreateSeuratObject(counts = mat_sparse)
 
 #add barcode data as a new assay independent from RNA
-seurat_obj[['barcode']] <- CreateAssayObject(counts = mat)
+seurat_obj[["HTO"]] <- CreateAssayObject(counts = mat_sparse)
 
 #normalize
-seurat_obj <- NormalizeData(seurat_obj, assay = 'barcode', normalization.method = "CLR")
+seurat_obj <- NormalizeData(seurat_obj, assay = 'HTO', normalization.method = "CLR")
 
 #run HTOdemux
-res <-  HTODemux(seurat_obj, assay = 'barcode', positive.quantile = 0.99)
+res <-  HTODemux(seurat_obj, assay = 'HTO', positive.quantile = 0.99)
 
 #get classifications
 classifications <- data.frame(
   cell_barcode = colnames(seurat_obj),
   classification = case_when(
-    res$barcode_classification.global == "Doublet" ~ "multiplet",
-    res$barcode_classification.global == "Negative" ~ "negative",
+    res$HTO_classification.global == "Doublet" ~ "multiplet",
+    res$HTO_classification.global == "Negative" ~ "negative",
     TRUE ~ "singlet"
   )
 )

@@ -1,0 +1,5 @@
+"classification","n","dataset","method"
+"multiplet",87,"dataset_4","bff_raw"
+"negative",2239,"dataset_4","bff_raw"
+"singlet",1206,"dataset_4","bff_raw"
+"total",3532,"dataset_4","bff_raw"

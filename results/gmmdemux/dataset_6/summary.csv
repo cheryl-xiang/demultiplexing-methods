@@ -1,0 +1,5 @@
+classification,n,dataset,method
+multiplet,1480,dataset_6,gmmdemux
+negative,43,dataset_6,gmmdemux
+singlet,489,dataset_6,gmmdemux
+total,2012,dataset_6,gmmdemux
