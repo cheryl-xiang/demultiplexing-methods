@@ -48,7 +48,7 @@ write.csv(classifications,
 summary_counts <- classifications %>%
   mutate(classification = case_when(
     classification == 'negative' ~ 'negative',
-    str_detect(classification, 'multiplet') ~ 'multiplet',
+    str_detect(classification, 'multiplet') ~ 'doublet',
     TRUE ~ 'singlet'
   )) %>%
   count(classification) %>%

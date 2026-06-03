@@ -38,7 +38,7 @@ classes <- dmmClassify(res)
 classifications <- data.frame(
   cell_barcode = rownames(classes),
   classification = case_when(
-    classes$Type == 'multiplet' ~ 'multiplet',
+    classes$Type == 'multiplet' ~ 'doublet',
     classes$Type == 'singlet' ~ 'singlet',
     TRUE ~ 'negative'
   )

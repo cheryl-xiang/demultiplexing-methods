@@ -39,7 +39,7 @@ classifications.columns = ['cell_barcode', 'classification']
 
 #match classfication names 
 classifications['classification'] = classifications['classification'].apply(
-    lambda x: 'negative' if x == 0 else ('multiplet' if x == 2 else 'singlet')
+    lambda x: 'negative' if x == 0 else ('doublet' if x == 2 else 'singlet')
 )
 
 #save classifications

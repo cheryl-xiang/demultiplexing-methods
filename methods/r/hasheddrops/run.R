@@ -25,7 +25,7 @@ res <- hashedDrops(mat)
 classifications <- data.frame(
   cell_barcode = colnames(mat),
   classification = case_when(
-    res$Doublet == TRUE ~ 'multiplet',
+    res$Doublet == TRUE ~ 'doublet',
     res$Confident == TRUE ~ "singlet",
     TRUE ~ "negative"
   )

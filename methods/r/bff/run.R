@@ -39,11 +39,11 @@ if (is.null(res)) {
   quit(status = 0)
 }
 
-# --- BFF_Raw ---
+#BFF_Raw
 classifications_raw <- data.frame(
   cell_barcode = res$cellbarcode,
   classification = case_when(
-    res$bff_raw == 'Doublet' ~ 'multiplet',
+    res$bff_raw == 'Doublet' ~ 'doublet',
     res$bff_raw == 'Negative' ~ 'negative',
     TRUE ~ 'singlet'
   )
@@ -72,7 +72,7 @@ write.csv(summary_raw,
 classifications_cluster <- data.frame(
   cell_barcode = res$cellbarcode,
   classification = case_when(
-    res$bff_cluster == 'Doublet' ~ 'multiplet',
+    res$bff_cluster == 'Doublet' ~ 'doublet',
     res$bff_cluster == 'Negative' ~ 'negative',
     TRUE ~ 'singlet'
   )

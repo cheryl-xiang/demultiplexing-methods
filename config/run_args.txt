@@ -8,4 +8,3 @@ winkler_pdx3a data/winkler_pdx3a/GSE211145_MULTI_barcode_count_PDX3A_winkler.csv
 winkler_pdx3b data/winkler_pdx3b/GSE211145_MULTI_barcode_count_PDX3B_winkler.csv 7 0
 
 
-Rscript methods/r/bff/run.R

@@ -37,9 +37,9 @@ res <-  HTODemux(seurat_obj, assay = 'HTO', positive.quantile = 0.99)
 classifications <- data.frame(
   cell_barcode = colnames(seurat_obj),
   classification = case_when(
-    res$HTO_classification.global == "Doublet" ~ "multiplet",
-    res$HTO_classification.global == "Negative" ~ "negative",
-    TRUE ~ "singlet"
+    res$HTO_classification.global == 'Doublet' ~ 'doublet',
+    res$HTO_classification.global == 'Negative' ~ 'negative',
+    TRUE ~ 'singlet'
   )
 )
 

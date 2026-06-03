@@ -65,7 +65,7 @@ def map_label(label):
     if name == 'negative':
         return 'negative'
     elif '-' in name:
-        return 'multiplet'
+        return 'doublet'
     else:
         return 'singlet'
     
