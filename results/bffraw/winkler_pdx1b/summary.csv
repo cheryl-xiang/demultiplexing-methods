@@ -1,0 +1,5 @@
+"classification","n","dataset","method"
+"multiplet",23,"winkler_pdx1b","bff_raw"
+"negative",252,"winkler_pdx1b","bff_raw"
+"singlet",1661,"winkler_pdx1b","bff_raw"
+"total",1936,"winkler_pdx1b","bff_raw"

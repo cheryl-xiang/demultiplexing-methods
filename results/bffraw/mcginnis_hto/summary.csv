@@ -1,0 +1,5 @@
+"classification","n","dataset","method"
+"multiplet",4916,"mcginnis_hto","bff_raw"
+"negative",229,"mcginnis_hto","bff_raw"
+"singlet",14,"mcginnis_hto","bff_raw"
+"total",5159,"mcginnis_hto","bff_raw"

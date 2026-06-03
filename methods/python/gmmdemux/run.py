@@ -2,7 +2,7 @@
 
 #to run in terminal: 
 #    (1) conda activate demux-py
-#    (2) python3 methods/python/gmmdemux/run.py dataset_# data/dataset_#/hto/file_name.csv
+#    (2) python3 methods/python/gmmdemux/run.py dataset data/dataset/hto/file_name.csv
 
 import sys
 import os
@@ -19,6 +19,7 @@ input_file = sys.argv[2]
 #data loading
 data = pd.read_csv(input_file, index_col=0)
 data = data.drop(columns=[col for col in data.columns if 'nUMI' in col])  #also check for other col names in other data
+data = data.loc[:, data.sum() > 0]
 
 #get hashtag column names
 hto_names = ','.join(data.columns.tolist())

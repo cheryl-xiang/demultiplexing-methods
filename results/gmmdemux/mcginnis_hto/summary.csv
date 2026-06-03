@@ -1,0 +1,5 @@
+classification,n,dataset,method
+multiplet,4930,mcginnis_hto,gmmdemux
+negative,180,mcginnis_hto,gmmdemux
+singlet,49,mcginnis_hto,gmmdemux
+total,5159,mcginnis_hto,gmmdemux

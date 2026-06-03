@@ -1,10 +1,11 @@
 datasets:
-  dataset_1:
-    name: "8 Donor PBMC AH"
+  mcginnis_ms:
+    name: "8 Donor PBMC AH MULTI-seq"
     geo_accession: "GSM4904942"
-    hto_file: "data/dataset_1/hto/GSM4904942_8donor_PBMC_AH_MULTI_matrix.csv"
-    rna_dir: "data/dataset_1/rna/"
+    hto_file: "data/mcginnis_ms/hto/GSM4904942_8donor_PBMC_AH_MULTI_matrix.csv"
+    rna_dir: "data/mcginnis_ms/rna/"
     n_donors: 8
+    hto_technology: "MULTI-seq"
     hto_columns:
       - Bar9
       - Bar10
@@ -17,20 +18,25 @@ datasets:
     numi_columns_to_drop:
       - nUMI
       - nUMI_Total
+    n_cells_hto: 5159
+    n_cells_rna: 4650
+    n_cells_common: 4650
     demultiplex:
-        n_rounds: 3
-        rescue_threshold: 10
+      n_rounds: 3
+      rescue_threshold: 10
     notes: >
-      - deMULTIplex2 internally filters cells before classification - missing cells
+      deMULTIplex2 internally filters cells before classification - missing cells
       are reassigned as negative in output to maintain consistent total of 5159
-      across all methods
+      across all methods.
+      509 cells present in HTO but not RNA matrix, dropped for demuxmix full model.
 
-  dataset_2:
-    name: 
-    geo_accession: "GSM4904930"
-    hto_file: "data/dataset_2/hto/GSM490493...csv"
-    rna_dir: 
+  mcginnis_hto:
+    name: "8 Donor PBMC AH SCMK"
+    geo_accession: "GSM4904939"
+    hto_file: "data/mcginnis_hto/hto/GSM4904939_8donor_PBMC_AH_SCMK_matrix.csv"
+    rna_dir: "data/mcginnis_ms/rna/"
     n_donors: 8
+    hto_technology: "SCMK"
     hto_columns:
       - Bar1
       - Bar2
@@ -40,9 +46,107 @@ datasets:
       - Bar6
       - Bar7
       - Bar8
-    demultiplex:
-        n_rounds: 4
-        rescue_threshold: 20
     numi_columns_to_drop:
       - nUMI
       - nUMI_Total
+    n_cells_hto: 5159
+    n_cells_rna: 4650
+    n_cells_common: 4650
+    demultiplex:
+      n_rounds: 4
+      rescue_threshold: 20
+    notes: >
+      Shares RNA matrix with mcginnis_ms - same cells tagged with SCMK instead of MULTI-seq.
+      SCMK data is noisier than MULTI-seq - some methods perform worse on this dataset.
+      bff_raw fails on this dataset due to high doublet rate (95%) exceeding filter threshold.
+
+  winkler_pdx3b:
+    name: "Winkler PDX3B"
+    geo_accession: "GSE211145"
+    hto_file: "data/winkler_pdx3b/hto/GSE211145_MULTI_barcode_count_PDX3B_winkler.csv"
+    rna_dir: null
+    n_donors: 15
+    hto_technology: "MULTI-seq"
+    hto_columns_in_file: 96
+    hto_columns_used: 15
+    numi_columns_to_drop:
+      - nUMI
+      - nUMI_total
+    n_cells_hto: 3544
+    demultiplex:
+      n_rounds: 7
+      rescue_threshold: 0
+    notes: >
+      96 barcodes in file but only Bar1-Bar15 used - empty barcodes filtered automatically by rowSums > 0.
+      Rescue step skipped for demultiplex - too few cells remaining after 7 rounds.
+      htodemux fails on this dataset - kmeans does not converge on 15-barcode dataset.
+
+  winkler_pdx3a:
+    name: "Winkler PDX3A"
+    geo_accession: "GSE211145"
+    hto_file: "data/winkler_pdx3a/hto/GSE211145_MULTI_barcode_count_PDX3A_winkler.csv"
+    rna_dir: null
+    hto_technology: "MULTI-seq"
+    hto_columns_in_file: 96
+    numi_columns_to_drop:
+      - nUMI
+      - nUMI_total
+    demultiplex:
+      n_rounds: 5
+      rescue_threshold: 0
+
+  winkler_pdx1d:
+    name: "Winkler PDX1D"
+    geo_accession: "GSE211145"
+    hto_file: "data/winkler_pdx1d/hto/GSE211145_MULTI_barcode_count_PDX1D_winkler.csv"
+    rna_dir: null
+    hto_technology: "MULTI-seq"
+    hto_columns_in_file: 96
+    numi_columns_to_drop:
+      - nUMI
+      - nUMI_total
+    demultiplex:
+      n_rounds: 4
+      rescue_threshold: 0
+
+  winkler_pdx1c:
+    name: "Winkler PDX1C"
+    geo_accession: "GSE211145"
+    hto_file: "data/winkler_pdx1c/hto/GSE211145_MULTI_barcode_count_PDX1C_winkler.csv"
+    rna_dir: null
+    hto_technology: "MULTI-seq"
+    hto_columns_in_file: 96
+    numi_columns_to_drop:
+      - nUMI
+      - nUMI_total
+    demultiplex:
+      n_rounds: 4
+      rescue_threshold: 0
+
+  winkler_pdx1b:
+    name: "Winkler PDX1B"
+    geo_accession: "GSE211145"
+    hto_file: "data/winkler_pdx1b/hto/GSE211145_MULTI_barcode_count_PDX1B_winkler.csv"
+    rna_dir: null
+    hto_technology: "MULTI-seq"
+    hto_columns_in_file: 96
+    numi_columns_to_drop:
+      - nUMI
+      - nUMI_total
+    demultiplex:
+      n_rounds: 3
+      rescue_threshold: 0
+
+  winkler_pdx1a:
+    name: "Winkler PDX1A"
+    geo_accession: "GSE211145"
+    hto_file: "data/winkler_pdx1a/hto/GSE211145_MULTI_barcode_count_PDX1A_winkler.csv"
+    rna_dir: null
+    hto_technology: "MULTI-seq"
+    hto_columns_in_file: 96
+    numi_columns_to_drop:
+      - nUMI
+      - nUMI_total
+    demultiplex:
+      n_rounds: 4
+      rescue_threshold: 0
