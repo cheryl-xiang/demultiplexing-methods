@@ -1,5 +1,5 @@
 classification,n,dataset,method
-multiplet,431,mcginnis_ms,hashsolo
+doublet,431,mcginnis_ms,hashsolo
 negative,75,mcginnis_ms,hashsolo
 singlet,4653,mcginnis_ms,hashsolo
 total,5159,mcginnis_ms,hashsolo

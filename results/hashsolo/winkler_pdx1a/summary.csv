@@ -1,5 +1,5 @@
 classification,n,dataset,method
-multiplet,240,winkler_pdx1a,hashsolo
+doublet,240,winkler_pdx1a,hashsolo
 negative,10,winkler_pdx1a,hashsolo
 singlet,1534,winkler_pdx1a,hashsolo
 total,1784,winkler_pdx1a,hashsolo
