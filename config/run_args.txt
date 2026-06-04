@@ -1,4 +1,4 @@
-dataset  dataset-fp   dataset-rna   demultiplex-quantile-sweep-rounds   demultiplex-rescue-rounds   htodemux-n-barcodes
+dataset  dataset-fp   dataset-rna   demultiplex-n-rounds   demultiplex-rescue-thresh   htodemux-n-barcodes
 
 mcginnis_ms data/mcginnis_ms/hto/GSM4904942_8donor_PBMC_AH_MULTI_matrix.csv data/mcginnis_ms/rna/ 3 10 8
 mcginnis_hto data/mcginnis_hto/hto/GSM4904939_8donor_PBMC_AH_SCMK_matrix.csv data/mcginnis_ms/rna/ 4 20 8
@@ -9,4 +9,4 @@ winkler_pdx1d data/winkler_pdx1d/GSE211145_MULTI_barcode_count_PDX1D_winkler.csv
 winkler_pdx3a data/winkler_pdx3a/GSE211145_MULTI_barcode_count_PDX3A_winkler.csv 5 0 15
 winkler_pdx3b data/winkler_pdx3b/GSE211145_MULTI_barcode_count_PDX3B_winkler.csv 7 0 15
 
-Rscript methods/r/htodemux/run.R
+Rscript methods/r/demultiplex/run.R 

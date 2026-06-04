@@ -26,17 +26,15 @@ is_cell_barcode <- function(names) {
 if (is_cell_barcode(rownames(data))) {
   print('Detected cells as rows - no transpose needed')
   mat <- as.matrix(data)
+  mat <- mat[, colSums(mat) > 0]
 } else {
   print('Detected barcodes as rows - transposing')
   mat <- t(as.matrix(data))
+  mat <- mat[, colSums(mat) > 0]
 }
 
-#filter empty barcodes
-mat <- mat[rowSums(mat) > 0, ]
-print(paste('Barcodes:', nrow(mat)))
-print(paste('Cells:', ncol(mat)))
-print(paste('Barcode names:', paste(rownames(mat), collapse=', ')))
-
+print(paste('Barcodes:', ncol(mat)))
+print(paste('Cells:', nrow(mat)))
 data.full <- mat
 data <- mat
 neg.cells <- c()
