@@ -1,5 +1,5 @@
 "classification","n","dataset","method"
-"multiplet",1373,"winkler_pdx3a","bff_cluster"
+"doublet",1373,"winkler_pdx3a","bff_cluster"
 "negative",14,"winkler_pdx3a","bff_cluster"
 "singlet",2145,"winkler_pdx3a","bff_cluster"
 "total",3532,"winkler_pdx3a","bff_cluster"

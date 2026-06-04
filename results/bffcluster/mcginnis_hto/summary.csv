@@ -1,5 +1,5 @@
 "classification","n","dataset","method"
-"multiplet",983,"mcginnis_hto","bff_cluster"
+"doublet",983,"mcginnis_hto","bff_cluster"
 "negative",5,"mcginnis_hto","bff_cluster"
 "singlet",4171,"mcginnis_hto","bff_cluster"
 "total",5159,"mcginnis_hto","bff_cluster"
