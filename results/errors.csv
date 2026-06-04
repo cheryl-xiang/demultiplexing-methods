@@ -1,2 +1,20 @@
 dataset,method,error
-dataset_2,bff_raw,High doublet rate (95%) exceeded filter threshold - SCMK data too noisy
+winkler_pdx3a,gmm_demux,Does not finish - EM algorithm gets stuck during initialization with many barcodes
+winkler_pdx3b,gmm_demux,Does not finish - EM algorithm gets stuck during initialization with many barcodes
+winkler_pdx1a,htodemux,clara clustering creates clusters with zero counts - fails with default kfunc
+winkler_pdx1b,htodemux,clara clustering creates clusters with zero counts - fails with default kfunc
+winkler_pdx1c,htodemux,clara clustering creates clusters with zero counts - fails with default kfunc
+winkler_pdx3a,htodemux,clara clustering creates clusters with zero counts - fails with default kfunc
+winkler_pdx3b,htodemux,clara clustering creates clusters with zero counts - fails with default kfunc
+winkler_pdx1a,demuxmix,RNA count matrix not available for this dataset
+winkler_pdx1b,demuxmix,RNA count matrix not available for this dataset
+winkler_pdx1c,demuxmix,RNA count matrix not available for this dataset
+winkler_pdx1d,demuxmix,RNA count matrix not available for this dataset
+winkler_pdx3a,demuxmix,RNA count matrix not available for this dataset
+winkler_pdx3b,demuxmix,RNA count matrix not available for this dataset
+winkler_pdx1a,demuxmix_naive,RNA count matrix not available for this dataset
+winkler_pdx1b,demuxmix_naive,RNA count matrix not available for this dataset
+winkler_pdx1c,demuxmix_naive,RNA count matrix not available for this dataset
+winkler_pdx1d,demuxmix_naive,RNA count matrix not available for this dataset
+winkler_pdx3a,demuxmix_naive,RNA count matrix not available for this dataset
+winkler_pdx3b,demuxmix_naive,RNA count matrix not available for this dataset
