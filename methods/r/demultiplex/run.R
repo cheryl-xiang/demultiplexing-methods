@@ -19,12 +19,16 @@ data <- read.csv(input_file, row.names = 1)
 data <- data[, !colnames(data) %in% c('nUMI', 'nUMI_total')]
 
 #detect orientation and transpose if needed
-if (mean(nchar(rownames(data))) > mean(nchar(colnames(data)))) {
-  print('Detected cells as rows - transposing')
-  mat <- t(as.matrix(data))
-} else {
-  print('Detected barcodes as rows - no transpose needed')
+is_cell_barcode <- function(names) {
+  mean(nchar(names)) > 10 & grepl("^[ACGT]", names[1])
+}
+
+if (is_cell_barcode(rownames(data))) {
+  print('Detected cells as rows - no transpose needed')
   mat <- as.matrix(data)
+} else {
+  print('Detected barcodes as rows - transposing')
+  mat <- t(as.matrix(data))
 }
 
 #filter empty barcodes

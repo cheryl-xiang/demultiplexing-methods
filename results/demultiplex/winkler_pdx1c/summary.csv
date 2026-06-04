@@ -1,0 +1,5 @@
+"classification","n","dataset","method"
+"doublet",68,"winkler_pdx1c","demultiplex"
+"negative",676,"winkler_pdx1c","demultiplex"
+"singlet",1268,"winkler_pdx1c","demultiplex"
+"total",2012,"winkler_pdx1c","demultiplex"
