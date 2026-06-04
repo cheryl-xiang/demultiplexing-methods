@@ -2,7 +2,7 @@
 
 #to run in terminal: 
 #    (1) conda activate demux-r 
-#    (2) Rscript methods/r/demuxmixnaive/run.R dataset_# data/dataset_#/hto/file_name.csv data/dataset_#/rna/
+#    (2) Rscript methods/r/demuxmixnaive/run.R dataset data/dataset/hto/file_name.csv data/dataset/rna/
 
 #read command line arguments
 args <- commandArgs(trailingOnly = TRUE)
