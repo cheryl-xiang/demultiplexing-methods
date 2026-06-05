@@ -52,6 +52,8 @@ with open(config_file, 'r') as f:
         if len(parts) == 2:
             label_map[parts[0]] = parts[1] 
 
+#print(label_map)
+
 # read classifications
 classifications = pd.read_csv(csv_file, index_col=0)
 classifications.index.name = 'cell_barcode'

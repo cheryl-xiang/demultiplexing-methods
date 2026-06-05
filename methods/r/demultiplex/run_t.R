@@ -1,21 +1,15 @@
 #script to run deMULTIplex
-#cells as rows, barcodes as columns
+#barcodes as rows, cells as columns - transposes input
 
 #to run in terminal: 
 #    (1) conda activate demux-r 
-#    (2) Rscript methods/r/demultiplex/run.R dataset data/dataset/hto/file_name.csv n_rounds rescue_threshold [n_barcodes]
+#    (2) Rscript methods/r/demultiplex/run_t.R dataset data/dataset/hto/file_name.csv n_rounds rescue_threshold
 
 args <- commandArgs(trailingOnly = TRUE)
 dataset_id <- args[1]
 input_file <- args[2]
 n_rounds <- as.integer(args[3])
 rescue_threshold <- as.integer(args[4])
-
-if (length(args) >= 5) {
-  n_barcodes <- as.integer(args[5])
-} else {
-  n_barcodes <- NULL
-}
 
 library(deMULTIplex)
 library(tidyverse)
@@ -24,14 +18,9 @@ library(tidyverse)
 data <- read.csv(input_file, row.names = 1)
 data <- data[, !colnames(data) %in% c('nUMI', 'nUMI_total')]
 
-#select barcodes
-mat <- as.matrix(data)
-if (!is.null(n_barcodes)) {
-  mat <- mat[, 1:n_barcodes]
-  print(paste('Using first', n_barcodes, 'barcodes'))
-} else {
-  print(paste('Using all', ncol(mat), 'barcodes'))
-}
+#barcodes as rows - transpose and filter empty barcodes
+mat <- t(as.matrix(data))
+mat <- mat[, colSums(mat) > 0]
 
 print(paste('Barcodes:', ncol(mat)))
 print(paste('Cells:', nrow(mat)))

@@ -1,5 +1,6 @@
-dataset  dataset-fp   dataset-rna   demultiplex-n-rounds   demultiplex-rescue-thresh   htodemux-n-barcodes
+DATASET  DATASET-FP   DATASET-RNA   DEMULTIPLEX-N-ROUNDS  DEMULTIPLEX-RESCUE-THRESH   N-BARCODES
 
+---- CELLS AS ROWS ----
 mcginnis_ms data/mcginnis_ms/hto/GSM4904942_8donor_PBMC_AH_MULTI_matrix.csv data/mcginnis_ms/rna/ 3 10 8
 mcginnis_hto data/mcginnis_hto/hto/GSM4904939_8donor_PBMC_AH_SCMK_matrix.csv data/mcginnis_ms/rna/ 4 20 8
 winkler_pdx1a data/winkler_pdx1a/GSE211145_MULTI_barcode_count_PDX1A_winkler.csv 4 0 all
@@ -8,3 +9,7 @@ winkler_pdx1c data/winkler_pdx1c/GSE211145_MULTI_barcode_count_PDX1C_winkler.csv
 winkler_pdx1d data/winkler_pdx1d/GSE211145_MULTI_barcode_count_PDX1D_winkler.csv 4 0 all
 winkler_pdx3a data/winkler_pdx3a/GSE211145_MULTI_barcode_count_PDX3A_winkler.csv 5 0 15
 winkler_pdx3b data/winkler_pdx3b/GSE211145_MULTI_barcode_count_PDX3B_winkler.csv 7 0 15
+
+
+
+---- BARCODES AS ROWS ---- (use transposing script for demultiplex) 
