@@ -1,0 +1,5 @@
+"classification","n","dataset","method"
+"doublet",55,"gaublomme","demuxmix naive"
+"negative",28,"gaublomme","demuxmix naive"
+"singlet",2425,"gaublomme","demuxmix naive"
+"total",2508,"gaublomme","demuxmix naive"

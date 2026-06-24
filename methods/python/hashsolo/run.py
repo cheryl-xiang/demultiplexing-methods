@@ -2,7 +2,8 @@
 
 #to run in terminal: 
 #    (1) conda activate demux-py
-#    (2) python3 methods/python/hashsolo/run.py dataset data/dataset/hto/file_name.csv
+#    (2) python3 methods/python/hashsolo/run.py dataset data/dataset/hto/file_name.csv [switch_transpose]
+#    switch_transpose: TRUE to switch default transposing behavior (where barcodes are cols)
 
 import sys
 import anndata
@@ -14,9 +15,14 @@ import os
 dataset_id = sys.argv[1]
 input_file = sys.argv[2]
 
+switch_transpose = sys.argv[3].lower() == 'true' if len(sys.argv) >= 4 else False
+
 #data loading
 data = pd.read_csv(input_file, index_col=0)
 data = data.drop(columns=[col for col in data.columns if 'nUMI' in col])  #also check for other col names in other data
+
+if switch_transpose:
+    data = data.T
 
 adata = anndata.AnnData(X=data.values, 
                          obs=pd.DataFrame(index=data.index),

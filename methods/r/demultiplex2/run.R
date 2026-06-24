@@ -2,20 +2,31 @@
 
 #to run in terminal: 
 #    (1) conda activate demux-r 
-#    (2) Rscript methods/r/demultiplex2/run.R dataset data/dataset/hto/file_name.csv
+#    (2) Rscript methods/r/demultiplex2/run.R dataset data/dataset/hto/file_name.csv [switch_transpose]
+#    switch_transpose: TRUE to switch default transposing behavior (where barcodes are cols)
+
 
 #read command line arguments
 args <- commandArgs(trailingOnly = TRUE)
 dataset_id <- args[1]
 input_file <- args[2]
 
+if (length(args) >= 3) {
+  switch_transpose <- as.logical(args[3])
+} else {
+  switch_transpose <- FALSE
+}
 
 library(deMULTIplex2)
 library(tidyverse)
 
 #data loading
-data <- read.csv(input_file, row.names = 1)   #expects cols as barcodes rows a cells
+data <- read.csv(input_file, row.names = 1)
 data <- data[, !colnames(data) %in% c('nUMI', 'nUMI_total')] #will need to check other datasets for diff col names !!
+
+if (switch_transpose) {
+  data <- t(data)
+}
 
 #run deMULTIplex2
 res <- demultiplexTags(data)

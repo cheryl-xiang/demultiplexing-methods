@@ -2,7 +2,9 @@
 
 #to run in terminal: 
 #    (1) conda activate demux-r 
-#    (2) Rscript methods/r/demuxmixnaive/run.R dataset data/dataset/hto/file_name.csv data/dataset/rna/
+#    (2) Rscript methods/r/demuxmixnaive/run.R dataset data/dataset/hto/file_name.csv data/dataset/rna/ [switch_transpose]
+#    switch_transpose: TRUE to switch default transposing behavior (where barcodes are cols)
+
 
 #read command line arguments
 args <- commandArgs(trailingOnly = TRUE)
@@ -10,21 +12,34 @@ dataset_id <- args[1]
 input_file <- args[2]
 rna_dir <- args[3]
 
+if (length(args) >= 4) {
+  switch_transpose <- as.logical(args[4])
+} else {
+  switch_transpose <- FALSE
+}
+
 library(demuxmix)
 library(tidyverse)
 library(Matrix)
 
 #data loading
-#data loading
 data <- read.csv(input_file, row.names = 1)
 data <- data[, !colnames(data) %in% c('nUMI', 'nUMI_total')] #will need to check other datasets for diff col names !!
 
-mat <- t(data) #expects cells as cols, barcodes as rows
+do_transpose <- !switch_transpose
 
-#load rna data
+if (do_transpose) {
+  mat <- t(as.matrix(data))
+} else {
+  mat <- as.matrix(data)
+} #expects cells as cols, barcodes as rows
+
 #load rna data
 if (grepl('\\.rds$', rna_dir, ignore.case = TRUE)) {
   rna_mat <- readRDS(rna_dir)
+} else if (grepl('\\.h5$', rna_dir, ignore.case = TRUE)) {
+  library(Seurat)
+  rna_mat <- Read10X_h5(rna_dir)
 } else {
   barcodes <- read.table(file.path(rna_dir, 'barcodes.tsv'), header = FALSE)$V1
   features <- read.table(file.path(rna_dir, 'features.tsv'), header = FALSE)
@@ -33,9 +48,16 @@ if (grepl('\\.rds$', rna_dir, ignore.case = TRUE)) {
   colnames(rna_mat) <- barcodes
 }
 
-# find common cells between HTO and RNA
+#strip -1 suffix from RNA barcodes
+colnames(rna_mat) <- sub('-1$', '', colnames(rna_mat))
+
+#find common cells
 common_cells <- intersect(colnames(mat), colnames(rna_mat))
+print(paste('HTO cells:', ncol(mat)))
+print(paste('RNA cells:', ncol(rna_mat)))
+print(paste('Common cells:', length(common_cells)))
 mat <- mat[, common_cells, drop = FALSE]
+mat <- mat[rowSums(mat) > 0, , drop = FALSE]
 
 #run demuxmix naive
 res <- demuxmix(mat, model = 'naive')

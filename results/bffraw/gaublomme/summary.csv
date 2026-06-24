@@ -1,0 +1,5 @@
+"classification","n","dataset","method"
+"doublet",39,"gaublomme","bff_raw"
+"negative",46,"gaublomme","bff_raw"
+"singlet",2423,"gaublomme","bff_raw"
+"total",2508,"gaublomme","bff_raw"

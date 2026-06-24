@@ -2,12 +2,20 @@
 
 #to run in terminal: 
 #    (1) conda activate demux-r 
-#    (2) Rscript methods/r/hasheddrops/run.R dataset data/dataset/hto/file_name.csv
+#    (2) Rscript methods/r/hasheddrops/run.R dataset data/dataset/hto/file_name.csv [switch_transpose]
+#    switch_transpose: TRUE to switch default transposing behavior (where barcodes are cols)
+
 
 #read command line arguments
 args <- commandArgs(trailingOnly = TRUE)
 dataset_id <- args[1]
 input_file <- args[2]
+
+if (length(args) >= 3) {
+  switch_transpose <- as.logical(args[3])
+} else {
+  switch_transpose <- FALSE
+}
 
 library(DropletUtils)
 library(tidyverse)   #hmm check if you need this
@@ -16,7 +24,13 @@ library(tidyverse)   #hmm check if you need this
 data <- read.csv(input_file, row.names = 1)
 data <- data[, !colnames(data) %in% c('nUMI', 'nUMI_total')]  #will need to check other datasets for diff col names !!
 
-mat <- t(data)     #expects barcodes as rows, cells as cols
+do_transpose <- !switch_transpose
+
+if (do_transpose) {
+  mat <- t(as.matrix(data))
+} else {
+  mat <- as.matrix(data)
+}
 
 #run HashedDrops
 res <- hashedDrops(mat)

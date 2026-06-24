@@ -1,0 +1,5 @@
+"classification","n","dataset","method"
+"doublet",37,"gaublomme","demultiplex2"
+"negative",10,"gaublomme","demultiplex2"
+"singlet",2461,"gaublomme","demultiplex2"
+"total",2508,"gaublomme","demultiplex2"

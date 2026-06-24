@@ -3,7 +3,8 @@
 
 #to run in terminal: 
 #    (1) conda activate demux-r 
-#    (2) Rscript methods/r/demultiplex/run.R dataset data/dataset/hto/file_name.csv n_rounds rescue_threshold [n_barcodes]
+#    (2) Rscript methods/r/demultiplex/run.R dataset data/dataset/hto/file_name.csv n_rounds rescue_threshold [n_barcodes] [switch_transpose]
+#    switch_transpose: TRUE to switch default transposing behavior (where barcodes are cols)
 
 args <- commandArgs(trailingOnly = TRUE)
 dataset_id <- args[1]
@@ -12,9 +13,20 @@ n_rounds <- as.integer(args[3])
 rescue_threshold <- as.integer(args[4])
 
 if (length(args) >= 5) {
-  n_barcodes <- as.integer(args[5])
+  if (args[5] %in% c('TRUE', 'FALSE', 'true', 'false')) {
+    n_barcodes <- NULL
+    switch_transpose <- as.logical(args[5])
+  } else {
+    n_barcodes <- as.integer(args[5])
+    if (length(args) >= 6) {
+      switch_transpose <- as.logical(args[6])
+    } else {
+      switch_transpose <- FALSE
+    }
+  }
 } else {
   n_barcodes <- NULL
+  switch_transpose <- FALSE
 }
 
 library(deMULTIplex)
@@ -33,9 +45,9 @@ if (!is.null(n_barcodes)) {
   print(paste('Using all', ncol(mat), 'barcodes'))
 }
 
-print(paste('Barcodes:', ncol(mat)))
-print(paste('Cells:', nrow(mat)))
-print(paste('Barcode names:', paste(colnames(mat), collapse=', ')))
+if (switch_transpose) {
+  mat <- t(mat)
+}
 
 data.full <- mat
 data <- mat
