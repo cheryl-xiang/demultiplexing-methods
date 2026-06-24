@@ -1,0 +1,5 @@
+"classification","n","dataset","method"
+"doublet",2597,"stoeckius","bff_cluster"
+"negative",294,"stoeckius","bff_cluster"
+"singlet",12692,"stoeckius","bff_cluster"
+"total",15583,"stoeckius","bff_cluster"

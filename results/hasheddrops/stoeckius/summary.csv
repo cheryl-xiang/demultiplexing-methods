@@ -1,0 +1,5 @@
+"classification","n","dataset","method"
+"doublet",2378,"stoeckius","hasheddrops"
+"negative",268,"stoeckius","hasheddrops"
+"singlet",12937,"stoeckius","hasheddrops"
+"total",15583,"stoeckius","hasheddrops"

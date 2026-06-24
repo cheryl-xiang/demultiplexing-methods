@@ -3,6 +3,7 @@
 #to run in terminal: 
 #    (1) conda activate demux-r 
 #    (2) Rscript methods/r/demuxmix/run.R dataset data/dataset/hto/file_name.csv data/dataset/rna/
+#    (2) Rscript methods/r/demuxmix/run.R dataset data/dataset/hto/file_name.csv data/dataset/rna/file.rds
 
 #read command line arguments
 args <- commandArgs(trailingOnly = TRUE)
@@ -16,25 +17,32 @@ library(Matrix)
 
 #data loading
 data <- read.csv(input_file, row.names = 1)
-data <- data[, !colnames(data) %in% c('nUMI', 'nUMI_total')] #will need to check other datasets for diff col names !!
+data <- data[, !colnames(data) %in% c('nUMI', 'nUMI_total')]
 
 mat <- t(data) #expects cells as cols, barcodes as rows
 
 #load rna data
-barcodes <- read.table(file.path(rna_dir, "barcodes.tsv"), header = FALSE)$V1
-features <- read.table(file.path(rna_dir, "features.tsv"), header = FALSE)
-rna_mat <- readMM(file.path(rna_dir, "matrix.mtx"))
-rownames(rna_mat) <- features$V2
-colnames(rna_mat) <- barcodes
+if (grepl('\\.rds$', rna_dir, ignore.case = TRUE)) {
+  rna_mat <- readRDS(rna_dir)
+} else {
+  barcodes <- read.table(file.path(rna_dir, 'barcodes.tsv'), header = FALSE)$V1
+  features <- read.table(file.path(rna_dir, 'features.tsv'), header = FALSE)
+  rna_mat <- readMM(file.path(rna_dir, 'matrix.mtx'))
+  rownames(rna_mat) <- features$V2
+  colnames(rna_mat) <- barcodes
+}
 
 #strip -1 suffix from RNA barcodes to match HTO barcodes
-colnames(rna_mat) <- sub("-1$", "", colnames(rna_mat))
+colnames(rna_mat) <- sub('-1$', '', colnames(rna_mat))
 
 # compute total RNA counts per cell
 rna_counts <- colSums(rna_mat)
 
 # find common cells between HTO and RNA
 common_cells <- intersect(colnames(mat), names(rna_counts))
+print(paste('HTO cells:', ncol(mat)))
+print(paste('RNA cells:', length(rna_counts)))
+print(paste('Common cells:', length(common_cells)))
 mat <- mat[, common_cells, drop = FALSE]
 rna_counts <- rna_counts[common_cells]
 
@@ -64,7 +72,7 @@ summary_counts <- classifications %>%
   mutate(dataset = dataset_id, method = 'demuxmix')
 
 totals <- summary_counts %>%
-  summarise(classification = "total", n = sum(n), dataset = dataset_id, method = 'demuxmix')
+  summarise(classification = 'total', n = sum(n), dataset = dataset_id, method = 'demuxmix')
 
 summary_counts <- bind_rows(summary_counts, totals)
 
@@ -74,7 +82,7 @@ write.csv(summary_counts,
 
 #move plots to results folder
 if (file.exists('Rplots.pdf')) {
-  file.rename('Rplots.pdf', paste0('results/demuxmix/', dataset_id, "/Rplots.pdf"))
+  file.rename('Rplots.pdf', paste0('results/demuxmix/', dataset_id, '/Rplots.pdf'))
 }
 
 #print classification counts

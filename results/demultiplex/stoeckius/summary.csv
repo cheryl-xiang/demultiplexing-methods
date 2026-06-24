@@ -1,0 +1,5 @@
+"classification","n","dataset","method"
+"doublet",2446,"stoeckius","demultiplex"
+"negative",106,"stoeckius","demultiplex"
+"singlet",13031,"stoeckius","demultiplex"
+"total",15583,"stoeckius","demultiplex"

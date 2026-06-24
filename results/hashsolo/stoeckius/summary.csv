@@ -1,0 +1,5 @@
+classification,n,dataset,method
+doublet,2394,stoeckius,hashsolo
+negative,48,stoeckius,hashsolo
+singlet,13141,stoeckius,hashsolo
+total,15583,stoeckius,hashsolo

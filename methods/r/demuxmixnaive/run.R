@@ -22,9 +22,16 @@ data <- data[, !colnames(data) %in% c('nUMI', 'nUMI_total')] #will need to check
 mat <- t(data) #expects cells as cols, barcodes as rows
 
 #load rna data
-barcodes <- read.table(file.path(rna_dir, "barcodes.tsv"), header = FALSE)$V1
-rna_mat <- readMM(file.path(rna_dir, "matrix.mtx"))
-colnames(rna_mat) <- sub("-1$", "", barcodes)
+#load rna data
+if (grepl('\\.rds$', rna_dir, ignore.case = TRUE)) {
+  rna_mat <- readRDS(rna_dir)
+} else {
+  barcodes <- read.table(file.path(rna_dir, 'barcodes.tsv'), header = FALSE)$V1
+  features <- read.table(file.path(rna_dir, 'features.tsv'), header = FALSE)
+  rna_mat <- readMM(file.path(rna_dir, 'matrix.mtx'))
+  rownames(rna_mat) <- features$V2
+  colnames(rna_mat) <- barcodes
+}
 
 # find common cells between HTO and RNA
 common_cells <- intersect(colnames(mat), colnames(rna_mat))
