@@ -2,20 +2,27 @@
 
 #to run in terminal: 
 #    (1) conda activate demux-r 
-#    (2) Rscript methods/r/demuxmixnaive/run.R dataset data/dataset/hto/file_name.csv data/dataset/rna/ [switch_transpose]
-#    switch_transpose: TRUE to switch default transposing behavior (where barcodes are cols)
-
+#    (2) Rscript methods/r/demuxmixnaive/run.R dataset data/dataset/hto/file_name.csv [rna_dir] [switch_transpose]
+#    switch_transpose: TRUE to switch default transposing behavior (e.g. gaublomme where barcodes are cols)
 
 #read command line arguments
 args <- commandArgs(trailingOnly = TRUE)
 dataset_id <- args[1]
 input_file <- args[2]
-rna_dir <- args[3]
 
-if (length(args) >= 4) {
-  switch_transpose <- as.logical(args[4])
-} else {
-  switch_transpose <- FALSE
+#parse optional args
+rna_dir <- NULL
+switch_transpose <- FALSE
+
+if (length(args) >= 3) {
+  if (args[3] %in% c('TRUE', 'FALSE', 'true', 'false')) {
+    switch_transpose <- as.logical(args[3])
+  } else {
+    rna_dir <- args[3]
+    if (length(args) >= 4) {
+      switch_transpose <- as.logical(args[4])
+    }
+  }
 }
 
 library(demuxmix)
@@ -24,7 +31,7 @@ library(Matrix)
 
 #data loading
 data <- read.csv(input_file, row.names = 1)
-data <- data[, !colnames(data) %in% c('nUMI', 'nUMI_total')] #will need to check other datasets for diff col names !!
+data <- data[, !colnames(data) %in% c('nUMI', 'nUMI_total')]
 
 do_transpose <- !switch_transpose
 
@@ -32,31 +39,34 @@ if (do_transpose) {
   mat <- t(as.matrix(data))
 } else {
   mat <- as.matrix(data)
-} #expects cells as cols, barcodes as rows
-
-#load rna data
-if (grepl('\\.rds$', rna_dir, ignore.case = TRUE)) {
-  rna_mat <- readRDS(rna_dir)
-} else if (grepl('\\.h5$', rna_dir, ignore.case = TRUE)) {
-  library(Seurat)
-  rna_mat <- Read10X_h5(rna_dir)
-} else {
-  barcodes <- read.table(file.path(rna_dir, 'barcodes.tsv'), header = FALSE)$V1
-  features <- read.table(file.path(rna_dir, 'features.tsv'), header = FALSE)
-  rna_mat <- readMM(file.path(rna_dir, 'matrix.mtx'))
-  rownames(rna_mat) <- features$V2
-  colnames(rna_mat) <- barcodes
 }
 
-#strip -1 suffix from RNA barcodes
-colnames(rna_mat) <- sub('-1$', '', colnames(rna_mat))
+#subset to RNA intersection if RNA data is available
+if (!is.null(rna_dir)) {
+  if (grepl('\\.rds$', rna_dir, ignore.case = TRUE)) {
+    rna_mat <- readRDS(rna_dir)
+  } else if (grepl('\\.h5$', rna_dir, ignore.case = TRUE)) {
+    library(Seurat)
+    rna_mat <- Read10X_h5(rna_dir)
+  } else {
+    barcodes <- read.table(file.path(rna_dir, 'barcodes.tsv'), header = FALSE)$V1
+    features <- read.table(file.path(rna_dir, 'features.tsv'), header = FALSE)
+    rna_mat <- readMM(file.path(rna_dir, 'matrix.mtx'))
+    rownames(rna_mat) <- features$V2
+    colnames(rna_mat) <- barcodes
+  }
 
-#find common cells
-common_cells <- intersect(colnames(mat), colnames(rna_mat))
-print(paste('HTO cells:', ncol(mat)))
-print(paste('RNA cells:', ncol(rna_mat)))
-print(paste('Common cells:', length(common_cells)))
-mat <- mat[, common_cells, drop = FALSE]
+  colnames(rna_mat) <- sub('-1$', '', colnames(rna_mat))
+
+  common_cells <- intersect(colnames(mat), colnames(rna_mat))
+  print(paste('HTO cells:', ncol(mat)))
+  print(paste('RNA cells:', ncol(rna_mat)))
+  print(paste('Common cells:', length(common_cells)))
+  mat <- mat[, common_cells, drop = FALSE]
+} else {
+  print(paste('No RNA data provided - running on all', ncol(mat), 'cells'))
+}
+
 mat <- mat[rowSums(mat) > 0, , drop = FALSE]
 
 #run demuxmix naive
@@ -82,21 +92,19 @@ write.csv(classifications,
 #save summary counts
 summary_counts <- classifications %>%
   count(classification) %>%
-  mutate(dataset = dataset_id, method = 'demuxmix naive')
+  mutate(dataset = dataset_id, method = 'demuxmix_naive')
 
 totals <- summary_counts %>%
-  summarise(classification = "total", n = sum(n), dataset = dataset_id, method = 'demuxmix naive')
+  summarise(classification = 'total', n = sum(n), dataset = dataset_id, method = 'demuxmix_naive')
 
 summary_counts <- bind_rows(summary_counts, totals)
 
-write.csv(summary_counts, 
-          paste0('results/demuxmixnaive/', dataset_id, '/summary.csv'), 
+write.csv(summary_counts,
+          paste0('results/demuxmixnaive/', dataset_id, '/summary.csv'),
           row.names = FALSE)
 
-#move plots to results folder
 if (file.exists('Rplots.pdf')) {
-  file.rename('Rplots.pdf', paste0('results/demuxmixnaive/', dataset_id, "/Rplots.pdf"))
+  file.rename('Rplots.pdf', paste0('results/demuxmixnaive/', dataset_id, '/Rplots.pdf'))
 }
 
-#print classification counts
 print(summary_counts)

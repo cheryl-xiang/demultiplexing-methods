@@ -15,4 +15,9 @@ stoeckius data/stoeckius/hto/pbmc_hto_mtx_stoeckius.csv data/stoeckius/rna/pbmc_
 
 ---- BARCODES AS ROWS ---- (switch transposing) 
 gaublomme data/gaublomme/hto/barcodes_filtered_gaublomme.csv data/gaublomme/rna/experiment1_human_st_raw_10x.h5 3 10 all TRUE
-
+howitt_b1c1 data/howitt_b1c1/batch1_c1_hto_counts_howitt.csv 4 10 all TRUE
+howitt_b1c2 data/howitt_b1c2/batch1_c2_hto_counts_howitt.csv 3 10 all TRUE
+howitt_b2c1 data/howitt_b2c1/batch2_c1_hto_counts_howitt.csv 4 10 all TRUE
+howitt_b2c2 data/howitt_b2c2/batch2_c2_hto_counts_howitt.csv 9 30 all TRUE
+howitt_b3c1 data/howitt_b3c1/batch3_c1_hto_counts_howitt.csv 13 40 all TRUE
+howitt_b3c2 data/howitt_b3c2/batch3_c2_hto_counts_howitt.csv 4 20 all TRUE
