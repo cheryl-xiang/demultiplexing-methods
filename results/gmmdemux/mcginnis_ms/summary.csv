@@ -1,5 +1,5 @@
 classification,n,dataset,method
-doublet,283,mcginnis_ms,gmmdemux
-negative,329,mcginnis_ms,gmmdemux
-singlet,4547,mcginnis_ms,gmmdemux
+doublet,264,mcginnis_ms,gmmdemux
+negative,387,mcginnis_ms,gmmdemux
+singlet,4508,mcginnis_ms,gmmdemux
 total,5159,mcginnis_ms,gmmdemux

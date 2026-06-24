@@ -15,10 +15,9 @@ import glob
 dataset_id = sys.argv[1]
 input_file = sys.argv[2]
 
-
 #data loading
 data = pd.read_csv(input_file, index_col=0)
-data = data.drop(columns=[col for col in data.columns if 'nUMI' in col])  #also check for other col names in other data
+data = data.drop(columns=[col for col in data.columns if 'nUMI' in col])
 data = data.loc[:, data.sum() > 0]
 
 #get hashtag column names
@@ -26,7 +25,6 @@ hto_names = ','.join(data.columns.tolist())
 
 # set up output directory
 output_dir = f"results/gmmdemux/{dataset_id}"
-full_report_dir = f"{output_dir}/full_report"
 os.makedirs(output_dir, exist_ok=True)
 
 #run GMMDemux (from cmd line)
@@ -34,46 +32,31 @@ cmd = [
     'GMM-demux',
     '-c', input_file,        
     hto_names,
-    '-f', full_report_dir,  #full report to parse 
-    '-s', output_dir,       #simplified report
+    '-s', output_dir,
+    '-t', '0.8',
+    '-rs', '42'
 ]
 
 subprocess.run(cmd, check=True)
 
-#parse report 
-config_file = os.path.join(full_report_dir, 'GMM_full.config')
-csv_file = os.path.join(full_report_dir, 'GMM_full.csv')
+#parse simplified report
+csv_file = os.path.join(output_dir, 'GMM_simplified.csv')
 
-#map nums back to labels
-label_map = {}
-with open(config_file, 'r') as f:
-    for line in f:
-        parts = line.strip().split(', ')
-        if len(parts) == 2:
-            label_map[parts[0]] = parts[1] 
-
-#print(label_map)
-
-# read classifications
 classifications = pd.read_csv(csv_file, index_col=0)
 classifications.index.name = 'cell_barcode'
 classifications = classifications.reset_index()
 classifications.columns = ['cell_barcode', 'label', 'probability']
 
-
-#match classfication names
+#map simplified labels
 def map_label(label):
-    name = label_map.get(str(int(label)), 'negative')
-    if name == 'negative':
-        return 'negative'
-    elif '-' in name:
+    if label == 9:
         return 'doublet'
+    elif label == 0 or label == 10:
+        return 'negative'
     else:
         return 'singlet'
-    
-classifications['classification'] = classifications.apply(
-    lambda row: map_label(row['label']), axis=1
-)
+
+classifications['classification'] = classifications['label'].apply(map_label)
 
 #save classifications
 classifications.to_csv(f'{output_dir}/classifications.csv', index=False)
@@ -99,11 +82,5 @@ if os.path.exists('SSD_mtx'):
 
 for folder in glob.glob('GMM_Demux_*'):
     shutil.rmtree(folder)
-
-if os.path.exists(full_report_dir):
-    shutil.rmtree(full_report_dir)
-
-#if os.path.exists(f'{output_dir}/GMM_simplified.csv'):
-    #os.remove(f'{output_dir}/GMM_simplified.csv')
 
 print(summary)
