@@ -1,0 +1,5 @@
+"classification","n","dataset","method"
+"doublet",7046,"howitt_b3c2","bff_cluster"
+"negative",85,"howitt_b3c2","bff_cluster"
+"singlet",23944,"howitt_b3c2","bff_cluster"
+"total",31075,"howitt_b3c2","bff_cluster"

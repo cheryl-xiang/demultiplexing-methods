@@ -1,0 +1,5 @@
+"classification","n","dataset","method"
+"doublet",2003,"howitt_b1c2","hasheddrops"
+"negative",924,"howitt_b1c2","hasheddrops"
+"singlet",9585,"howitt_b1c2","hasheddrops"
+"total",12512,"howitt_b1c2","hasheddrops"

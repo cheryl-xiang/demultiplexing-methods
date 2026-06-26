@@ -1,0 +1,5 @@
+"classification","n","dataset","method"
+"doublet",2337,"howitt_b1c2","demuxmix_naive"
+"negative",749,"howitt_b1c2","demuxmix_naive"
+"singlet",9426,"howitt_b1c2","demuxmix_naive"
+"total",12512,"howitt_b1c2","demuxmix_naive"

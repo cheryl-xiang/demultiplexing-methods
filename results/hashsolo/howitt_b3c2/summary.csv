@@ -1,0 +1,5 @@
+classification,n,dataset,method
+doublet,6696,howitt_b3c2,hashsolo
+negative,2,howitt_b3c2,hashsolo
+singlet,24377,howitt_b3c2,hashsolo
+total,31075,howitt_b3c2,hashsolo

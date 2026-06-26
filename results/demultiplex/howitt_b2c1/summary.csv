@@ -1,0 +1,5 @@
+"classification","n","dataset","method"
+"doublet",11979,"howitt_b2c1","demultiplex"
+"negative",1194,"howitt_b2c1","demultiplex"
+"singlet",10862,"howitt_b2c1","demultiplex"
+"total",24035,"howitt_b2c1","demultiplex"

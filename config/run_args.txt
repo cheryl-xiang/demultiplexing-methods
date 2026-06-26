@@ -10,6 +10,12 @@ winkler_pdx1d data/winkler_pdx1d/GSE211145_MULTI_barcode_count_PDX1D_winkler.csv
 winkler_pdx3a data/winkler_pdx3a/GSE211145_MULTI_barcode_count_PDX3A_winkler.csv 5 0 15
 winkler_pdx3b data/winkler_pdx3b/GSE211145_MULTI_barcode_count_PDX3B_winkler.csv 7 0 15
 stoeckius data/stoeckius/hto/pbmc_hto_mtx_stoeckius.csv data/stoeckius/rna/pbmc_umi_mtx.rds data/stoeckius/rna/pbmc_umi_mtx.h5 3 15 all
+cook_mix1
+cook_mix2
+cook_mix3a
+cook_mix3b
+cook_mix4a
+cook_mix4b
 
 
 
@@ -21,3 +27,7 @@ howitt_b2c1 data/howitt_b2c1/batch2_c1_hto_counts_howitt.csv 4 10 all TRUE
 howitt_b2c2 data/howitt_b2c2/batch2_c2_hto_counts_howitt.csv 9 30 all TRUE
 howitt_b3c1 data/howitt_b3c1/batch3_c1_hto_counts_howitt.csv 13 40 all TRUE
 howitt_b3c2 data/howitt_b3c2/batch3_c2_hto_counts_howitt.csv 4 20 all TRUE
+howitt_cell_cap1 data/howitt_cell_cap1/lmo_counts_capture1_howitt_cell_line.csv 10 0 all TRUE
+howitt_cell_cap2 data/howitt_cell_cap2/lmo_counts_capture2_howitt_cell_line.csv 10 0 all TRUE
+howitt_cell_cap3 data/howitt_cell_cap3/lmo_counts_capture3_howitt_cell_line.csv 3 10 all TRUE
+

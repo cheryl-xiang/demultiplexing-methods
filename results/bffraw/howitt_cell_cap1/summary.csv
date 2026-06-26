@@ -1,0 +1,5 @@
+"classification","n","dataset","method"
+"doublet",3163,"howitt_cell_cap1","bff_raw"
+"negative",1802,"howitt_cell_cap1","bff_raw"
+"singlet",11633,"howitt_cell_cap1","bff_raw"
+"total",16598,"howitt_cell_cap1","bff_raw"
