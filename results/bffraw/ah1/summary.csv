@@ -1,0 +1,5 @@
+"classification","n","dataset","method"
+"doublet",2532,"ah1","bff_raw"
+"negative",14,"ah1","bff_raw"
+"singlet",3176,"ah1","bff_raw"
+"total",5722,"ah1","bff_raw"

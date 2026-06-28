@@ -1,0 +1,5 @@
+"classification","n","dataset","method"
+"doublet",2217,"bar20","hasheddrops"
+"negative",2522,"bar20","hasheddrops"
+"singlet",10260,"bar20","hasheddrops"
+"total",14999,"bar20","hasheddrops"

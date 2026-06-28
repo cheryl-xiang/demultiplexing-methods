@@ -1,0 +1,5 @@
+"classification","n","dataset","method"
+"doublet",5224,"bar20","htodemux"
+"negative",517,"bar20","htodemux"
+"singlet",9258,"bar20","htodemux"
+"total",14999,"bar20","htodemux"
