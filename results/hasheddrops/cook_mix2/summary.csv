@@ -1,0 +1,5 @@
+"classification","n","dataset","method"
+"doublet",495,"cook_mix2","hasheddrops"
+"negative",3628,"cook_mix2","hasheddrops"
+"singlet",8466,"cook_mix2","hasheddrops"
+"total",12589,"cook_mix2","hasheddrops"

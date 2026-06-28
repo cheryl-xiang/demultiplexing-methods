@@ -1,0 +1,5 @@
+"classification","n","dataset","method"
+"doublet",5165,"cook_mix3b","demultiplex2"
+"negative",130,"cook_mix3b","demultiplex2"
+"singlet",6089,"cook_mix3b","demultiplex2"
+"total",11384,"cook_mix3b","demultiplex2"

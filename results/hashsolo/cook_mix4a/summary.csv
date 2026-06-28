@@ -1,0 +1,5 @@
+classification,n,dataset,method
+doublet,6509,cook_mix4a,hashsolo
+negative,6,cook_mix4a,hashsolo
+singlet,7929,cook_mix4a,hashsolo
+total,14444,cook_mix4a,hashsolo
