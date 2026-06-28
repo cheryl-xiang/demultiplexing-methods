@@ -25,6 +25,7 @@ os.makedirs(output_dir, exist_ok=True)
 #data loading
 data = pd.read_csv(input_file, index_col=0)
 data = data.drop(columns=[col for col in data.columns if 'nUMI' in col])
+data = data.drop(columns=[col for col in data.columns if 'TSNE' in col])
 data = data.loc[:, data.sum() > 0]
 
 if switch_transpose:

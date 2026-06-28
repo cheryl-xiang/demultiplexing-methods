@@ -21,7 +21,7 @@ library(tidyverse)
 
 # data loading
 data <- read.csv(input_file, row.names = 1)
-data <- data[, !colnames(data) %in% c('nUMI', 'nUMI_total')]
+data <- data[, !colnames(data) %in% c('nUMI', 'nUMI_total', 'TSNE1', 'TSNE2')]
 
 if (switch_transpose) {
   mat <- as.matrix(data)

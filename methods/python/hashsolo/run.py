@@ -19,7 +19,8 @@ switch_transpose = sys.argv[3].lower() == 'true' if len(sys.argv) >= 4 else Fals
 
 #data loading
 data = pd.read_csv(input_file, index_col=0)
-data = data.drop(columns=[col for col in data.columns if 'nUMI' in col])  #also check for other col names in other data
+data = data.drop(columns=[col for col in data.columns if 'nUMI' in col])  
+data = data.drop(columns=[col for col in data.columns if 'TSNE' in col])
 
 if switch_transpose:
     data = data.T

@@ -24,7 +24,7 @@ library(Matrix)
 
 #data loading
 data <- read.csv(input_file, row.names = 1)
-data <- data[, !colnames(data) %in% c('nUMI', 'nUMI_total')] #will need to check other datasets for diff col names !!
+data <- data[, !colnames(data) %in% c('nUMI', 'nUMI_total', 'TSNE1', 'TSNE2')]
 
 do_transpose <- !switch_transpose
 
