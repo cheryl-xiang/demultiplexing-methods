@@ -1,0 +1,5 @@
+classification,n,dataset,method
+doublet,4109,howitt_b3c2,gmmdemux
+negative,11469,howitt_b3c2,gmmdemux
+singlet,15497,howitt_b3c2,gmmdemux
+total,31075,howitt_b3c2,gmmdemux

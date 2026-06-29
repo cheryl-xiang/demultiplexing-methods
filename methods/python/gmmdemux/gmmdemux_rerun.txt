@@ -1,0 +1,55 @@
+# ---- CELLS AS ROWS ----
+
+# mcginnis_ms
+GMM-demux -c data/mcginnis_ms/hto/GSM4904942_8donor_PBMC_AH_MULTI_matrix.csv Bar9,Bar10,Bar11,Bar12,Bar13,Bar14,Bar15,Bar16 -s results/gmmdemux/mcginnis_ms
+
+# mcginnis_hto
+GMM-demux -c data/mcginnis_hto/hto/GSM4904939_8donor_PBMC_AH_SCMK_matrix.csv Bar1,Bar2,Bar3,Bar4,Bar5,Bar6,Bar7,Bar8 -s results/gmmdemux/mcginnis_hto
+
+#gaublomme
+GMM-demux -c data/gaublomme/hto/barcodes_filtered_gmmdemux.csv S1HuF,S2HuM,S3HuF,S4HuM,S5HuF,S6HuM,S7HuF,S8HuM -s results/gmmdemux/gaublomme
+
+# winkler_pdx1a
+GMM-demux -c data/winkler_pdx1a/GSE211145_MULTI_barcode_count_PDX1A_winkler.csv Sample1,Sample2,Sample3,Sample4,Sample5,Sample6,Sample7,Sample8,Sample9,Sample10,Sample11 -s results/gmmdemux/winkler_pdx1a
+
+# winkler_pdx1b
+GMM-demux -c data/winkler_pdx1b/GSE211145_MULTI_barcode_count_PDX1B_winkler.csv Sample1,Sample2,Sample3,Sample4,Sample5,Sample6,Sample7,Sample8,Sample9,Sample10,Sample11 -s results/gmmdemux/winkler_pdx1b
+
+# winkler_pdx1c
+GMM-demux -c data/winkler_pdx1c/GSE211145_MULTI_barcode_count_PDX1C_winkler.csv Sample1,Sample2,Sample3,Sample4,Sample5,Sample6,Sample7,Sample8,Sample9,Sample10,Sample11 -s results/gmmdemux/winkler_pdx1c
+
+# winkler_pdx1d
+GMM-demux -c data/winkler_pdx1d/GSE211145_MULTI_barcode_count_PDX1D_winkler.csv Sample1,Sample2,Sample3,Sample4,Sample5,Sample6,Sample7,Sample8,Sample9,Sample10,Sample11 -s results/gmmdemux/winkler_pdx1d
+
+# stoeckius
+GMM-demux -c data/stoeckius/hto/pbmc_hto_mtx_stoeckius.csv HTO_A,HTO_B,HTO_C,HTO_D,HTO_E,HTO_F,HTO_G,HTO_H -s results/gmmdemux/stoeckius
+
+# ah1
+GMM-demux -c data/ah1/hto/barcodes_matrix_filtered_ah1.csv Bar1,Bar2,Bar3,Bar4,Bar5,Bar6,Bar7,Bar8,Bar9,Bar10,Bar11 -s results/gmmdemux/ah1
+
+#howitt_b1c1
+GMM-demux -c data/howitt_b1c1/batch1_c1_hto_counts_transpose.csv BAL_01,BAL_02,BAL_03,BAL_04,BAL_05,BAL_06,BAL_07,BAL_08 -s results/gmmdemux/howitt_b1c1
+
+#howitt_b1c2
+GMM-demux -c data/howitt_b1c2/batch1_c2_hto_counts_transpose.csv BAL_01,BAL_02,BAL_03,BAL_04,BAL_05,BAL_06,BAL_07,BAL_08 -s results/gmmdemux/howitt_b1c2
+
+#howitt_b2c1
+GMM-demux -c data/howitt_b2c1/batch2_c1_hto_counts_transpose.csv BAL_09,BAL_10,BAL_11,BAL_12,BAL_13,BAL_14,BAL_15,BAL_16 -s results/gmmdemux/howitt_b2c1
+
+#howitt_b2c2
+GMM-demux -c data/howitt_b2c2/batch2_c2_hto_counts_transpose.csv BAL_09,BAL_10,BAL_11,BAL_12,BAL_13,BAL_14,BAL_15,BAL_16 -s results/gmmdemux/howitt_b2c2
+
+#howitt_b3c1
+GMM-demux -c data/howitt_b3c1/batch3_c1_hto_counts_transpose.csv BAL_17,BAL_18,BAL_19,BAL_20,BAL_21,BAL_22,BAL_23,BAL_24 -s results/gmmdemux/howitt_b3c1
+
+#howitt_b3c2
+GMM-demux -c data/howitt_b3c2/batch3_c2_hto_counts_transpose.csv BAL_17,BAL_18,BAL_19,BAL_20,BAL_21,BAL_22,BAL_23,BAL_24 -s results/gmmdemux/howitt_b3c2
+
+#howitt_cell_cap1
+GMM-demux -c data/howitt_cell_cap1/lmo_counts_capture1_gmmdemux.csv CL_01,CL_02,CL_03 -s results/gmmdemux/howitt_cell_cap1
+
+#howitt_cell_cap2
+GMM-demux -c data/howitt_cell_cap2/lmo_counts_capture2_gmmdemux.csv CL_01,CL_02,CL_03 -s results/gmmdemux/howitt_cell_cap2
+
+#howitt_cell_cap3
+GMM-demux -c data/howitt_cell_cap3/lmo_counts_capture3_gmmdemux.csv CL_01,CL_02,CL_03 -s results/gmmdemux/howitt_cell_cap3
