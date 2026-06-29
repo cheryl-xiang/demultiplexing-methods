@@ -2,7 +2,8 @@
 
 #to run in terminal: 
 #    (1) conda activate demux-py
-#    (2) python3 methods/python/demuxem/run.py dataset data/dataset/hto/file_name.csv data/dataset/rna/raw_gene_bc_matrices_h5.h5
+#    (2) python3 methods/python/demuxem/run.py dataset data/dataset/hto/file_name.csv data/dataset/rna/raw_gene_bc_matrices_h5.h5 [switch_transpose]
+#    switch_transpose: TRUE to switch default transposing behavior (where barcodes are cols)
 
 import sys
 import os
@@ -16,6 +17,8 @@ if __name__ == '__main__':
     input_hto_file = sys.argv[2]
     input_rna_file = sys.argv[3]
 
+    switch_transpose = sys.argv[4].lower() == 'true' if len(sys.argv) >= 5 else False
+
     # set up output directory and output name prefix
     output_dir = f'results/demuxem/{dataset_id}'
     os.makedirs(output_dir, exist_ok=True)
@@ -24,6 +27,10 @@ if __name__ == '__main__':
     #data loading
     rna = io.read_input(input_rna_file)
     hto = io.read_input(input_hto_file, transpose=True, modality='hashing')
+
+    if switch_transpose:
+        #rna = rna.T
+        hto = io.read_input(input_hto_file, transpose=False, modality='hashing')
 
     print('RNA shape:', rna.shape)
     print('HTO shape:', hto.shape)

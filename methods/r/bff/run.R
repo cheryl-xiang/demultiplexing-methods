@@ -48,19 +48,41 @@ res <- tryCatch({
   NULL
 })
 
-if (is.null(res)) {
-  quit(status = 0)
-}
+print(head(res))
+print(colnames(res))
+print(table(res$bff_cluster, useNA = 'always'))
 
-#BFF_Raw
-classifications_raw <- data.frame(
-  cell_barcode = res$cellbarcode,
-  classification = case_when(
-    res$bff_raw == 'Doublet' ~ 'doublet',
-    res$bff_raw == 'Negative' ~ 'negative',
-    TRUE ~ 'singlet'
+if (is.null(res)) {
+  message('BFF failed - filling all cells as negative')
+  
+  classifications_raw <- data.frame(
+    cell_barcode = colnames(mat),
+    classification = 'negative'
   )
-)
+  classifications_cluster <- data.frame(
+    cell_barcode = colnames(mat),
+    classification = 'negative'
+  )
+} else {
+  classifications_raw <- data.frame(
+    cell_barcode = res$cellbarcode,
+    classification = case_when(
+      res$bff_raw == 'Doublet' ~ 'doublet',
+      res$bff_raw == 'Negative' ~ 'negative',
+      TRUE ~ 'singlet'
+    )
+  )
+  classifications_cluster <- data.frame(
+    cell_barcode = res$cellbarcode,
+    classification = case_when(
+      is.na(res$bff_cluster) ~ 'negative',
+      res$bff_cluster == 'Not Called' ~ 'negative',
+      res$bff_cluster == 'Doublet' ~ 'doublet',
+      res$bff_cluster == 'Negative' ~ 'negative',
+      TRUE ~ 'singlet'
+    )
+  )
+}
 
 dir.create(paste0('results/bffraw/', dataset_id), recursive = TRUE, showWarnings = FALSE)
 
@@ -80,16 +102,6 @@ summary_raw <- bind_rows(summary_raw, totals_raw)
 write.csv(summary_raw,
           paste0('results/bffraw/', dataset_id, '/summary.csv'),
           row.names = FALSE)
-
-# --- BFF_Cluster ---
-classifications_cluster <- data.frame(
-  cell_barcode = res$cellbarcode,
-  classification = case_when(
-    res$bff_cluster == 'Doublet' ~ 'doublet',
-    res$bff_cluster == 'Negative' ~ 'negative',
-    TRUE ~ 'singlet'
-  )
-)
 
 dir.create(paste0('results/bffcluster/', dataset_id), recursive = TRUE, showWarnings = FALSE)
 

@@ -1,0 +1,25 @@
+DATASET    DATASET-HTO     N-BARCODES
+
+---- CELLS AS ROWS ---- (script default)
+mcginnis_ms data/mcginnis_ms/hto/GSM4904942_8donor_PBMC_AH_MULTI_matrix.csv 8
+mcginnis_hto data/mcginnis_hto/hto/GSM4904939_8donor_PBMC_AH_SCMK_matrix.csv 8
+winkler_pdx1a data/winkler_pdx1a/GSE211145_MULTI_barcode_count_PDX1A_winkler.csv all
+winkler_pdx1b data/winkler_pdx1b/GSE211145_MULTI_barcode_count_PDX1B_winkler.csv all
+winkler_pdx1c data/winkler_pdx1c/GSE211145_MULTI_barcode_count_PDX1C_winkler.csv all
+winkler_pdx1d data/winkler_pdx1d/GSE211145_MULTI_barcode_count_PDX1D_winkler.csv all
+stoeckius data/stoeckius/hto/pbmc_hto_mtx_stoeckius.csv all
+ah1 data/ah1/hto/barcodes_matrix_filtered_ah1.csv data/ah1/rna/filtered_feature_bc_matrix.h5 5 20 all
+
+
+---- BARCODES AS ROWS ---- (switch transposing) 
+gaublomme data/gaublomme/hto/barcodes_filtered_gaublomme.csv all TRUE
+howitt_b1c1 data/howitt_b1c1/batch1_c1_hto_counts_howitt.csv all TRUE
+howitt_b1c2 data/howitt_b1c2/batch1_c2_hto_counts_howitt.csv all TRUE
+howitt_b2c1 data/howitt_b2c1/batch2_c1_hto_counts_howitt.csv all TRUE
+howitt_b2c2 data/howitt_b2c2/batch2_c2_hto_counts_howitt.csv all TRUE
+howitt_b3c1 data/howitt_b3c1/batch3_c1_hto_counts_howitt.csv all TRUE
+howitt_b3c2 data/howitt_b3c2/batch3_c2_hto_counts_howitt.csv all TRUE
+howitt_cell_cap1 data/howitt_cell_cap1/lmo_counts_capture1_howitt_cell_line.csv all TRUE
+howitt_cell_cap2 data/howitt_cell_cap2/lmo_counts_capture2_howitt_cell_line.csv all TRUE
+howitt_cell_cap3 data/howitt_cell_cap3/lmo_counts_capture3_howitt_cell_line.csv all TRUE
+

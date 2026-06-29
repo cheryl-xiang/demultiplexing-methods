@@ -3,7 +3,7 @@
 #to run in terminal: 
 #    (1) conda activate demux-py
 #    (2) python3 methods/python/gmmdemux/run.py dataset data/dataset/hto/file_name.csv [switch_transpose]
-#    switch_transpose: TRUE to switch default transposing behavior (where barcodes are cols)
+#    switch_transpose: TRUE to switch default transposing behavior (e.g. gaublomme where barcodes are cols)
 
 import sys
 import os
@@ -28,15 +28,18 @@ data = data.drop(columns=[col for col in data.columns if 'nUMI' in col])
 data = data.drop(columns=[col for col in data.columns if 'TSNE' in col])
 data = data.loc[:, data.sum() > 0]
 
+#get hashtag column names from filtered data
+hto_names = ','.join(data.columns.tolist())
+
+#only write temp file if transposing, otherwise pass original file directly
 if switch_transpose:
+    data = data.T
+    hto_names = ','.join(data.columns.tolist())
     temp_file = f'{output_dir}/temp_hto.csv'
     data.to_csv(temp_file)
     cmd_input = temp_file
 else:
     cmd_input = input_file
-
-#get hashtag column names
-hto_names = ','.join(data.columns.tolist())
 
 #run GMMDemux (from cmd line)
 cmd = [
@@ -44,8 +47,6 @@ cmd = [
     '-c', cmd_input,
     hto_names,
     '-s', output_dir,
-    '-t', '0.8',
-    '-rs', '42'
 ]
 
 subprocess.run(cmd, check=True)
@@ -62,14 +63,18 @@ classifications.index.name = 'cell_barcode'
 classifications = classifications.reset_index()
 classifications.columns = ['cell_barcode', 'label', 'probability']
 
+n_htos = len(data.columns)
+
 #map simplified labels
 def map_label(label):
-    if label == 9:
-        return 'doublet'
-    elif label == 0 or label == 10:
+    if label == 0 or label == n_htos + 2:
         return 'negative'
-    else:
+    elif label == n_htos + 1:
+        return 'doublet'
+    elif 1 <= label <= n_htos:
         return 'singlet'
+    else:
+        return 'negative'
 
 classifications['classification'] = classifications['label'].apply(map_label)
 
