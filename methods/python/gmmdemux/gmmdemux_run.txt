@@ -1,3 +1,5 @@
+#To Run: Paste entire script into terminal
+
 conda activate demux-py
 
 # ---- CELLS AS ROWS ----
