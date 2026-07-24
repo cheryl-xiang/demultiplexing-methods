@@ -56,7 +56,7 @@ mat_sparse <- Matrix::Matrix(mat, sparse = TRUE)
 seurat_obj <- CreateSeuratObject(counts = mat_sparse)
 seurat_obj[['HTO']] <- CreateAssayObject(counts = mat_sparse)
 seurat_obj <- NormalizeData(seurat_obj, assay = 'HTO', normalization.method = 'CLR')
-res <- HTODemux(seurat_obj, assay = 'HTO', positive.quantile = 0.99, kfunc = 'kmeans')
+res <- HTODemux(seurat_obj, assay = 'HTO', positive.quantile = 0.99, kfunc='clara')
 
 classifications <- data.frame(
   cell_barcode = colnames(seurat_obj),

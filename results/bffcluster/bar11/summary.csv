@@ -1,0 +1,5 @@
+"classification","n","dataset","method"
+"doublet",1065,"bar11","bff_cluster"
+"negative",14,"bar11","bff_cluster"
+"singlet",4643,"bar11","bff_cluster"
+"total",5722,"bar11","bff_cluster"

@@ -1,0 +1,5 @@
+"classification","n","dataset","method"
+"doublet",360,"bar11","demultiplex2"
+"negative",1601,"bar11","demultiplex2"
+"singlet",3760,"bar11","demultiplex2"
+"total",5721,"bar11","demultiplex2"

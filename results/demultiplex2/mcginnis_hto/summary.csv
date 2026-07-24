@@ -1,5 +1,5 @@
 "classification","n","dataset","method"
 "doublet",615,"mcginnis_hto","demultiplex2"
-"negative",914,"mcginnis_hto","demultiplex2"
+"negative",909,"mcginnis_hto","demultiplex2"
 "singlet",3630,"mcginnis_hto","demultiplex2"
-"total",5159,"mcginnis_hto","demultiplex2"
+"total",5154,"mcginnis_hto","demultiplex2"

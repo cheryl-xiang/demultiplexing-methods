@@ -1,0 +1,5 @@
+"classification","n","dataset","method"
+"doublet",471,"bar11","demuxmix_naive"
+"negative",1892,"bar11","demuxmix_naive"
+"singlet",3358,"bar11","demuxmix_naive"
+"total",5721,"bar11","demuxmix_naive"

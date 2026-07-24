@@ -9,7 +9,7 @@ datasets = {
     'winkler_pdx1c': 11,
     'winkler_pdx1d': 11,
     'stoeckius': 8,
-    'ah1': 11,
+    'bar11': 11,
     'gaublomme': 8,
     'howitt_b1c1': 8,
     'howitt_b1c2': 8,

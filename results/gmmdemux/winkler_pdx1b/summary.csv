@@ -1,5 +1,5 @@
 classification,n,dataset,method
-doublet,1494,winkler_pdx1b,gmmdemux
-negative,302,winkler_pdx1b,gmmdemux
-singlet,140,winkler_pdx1b,gmmdemux
+doublet,1619,winkler_pdx1b,gmmdemux
+negative,281,winkler_pdx1b,gmmdemux
+singlet,36,winkler_pdx1b,gmmdemux
 total,1936,winkler_pdx1b,gmmdemux

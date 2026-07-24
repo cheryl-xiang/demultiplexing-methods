@@ -1,0 +1,5 @@
+classification,n,dataset,method
+doublet,202,bar11,gmmdemux
+negative,2849,bar11,gmmdemux
+singlet,2671,bar11,gmmdemux
+total,5722,bar11,gmmdemux

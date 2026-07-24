@@ -1,0 +1,5 @@
+classification,n,dataset,method
+doublet,457,bar11,hashsolo
+negative,4,bar11,hashsolo
+singlet,5261,bar11,hashsolo
+total,5722,bar11,hashsolo
