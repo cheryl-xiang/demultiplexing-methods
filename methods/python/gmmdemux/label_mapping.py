@@ -4,11 +4,6 @@ import os
 datasets = {
     'mcginnis_ms': 8,
     'mcginnis_hto': 8,
-    'winkler_pdx1a': 11,
-    'winkler_pdx1b': 11,
-    'winkler_pdx1c': 11,
-    'winkler_pdx1d': 11,
-    'stoeckius': 8,
     'bar11': 11,
     'gaublomme': 8,
     'howitt_b1c1': 8,
@@ -30,16 +25,12 @@ for dataset_id, n_htos in datasets.items():
         print(f'Skipping {dataset_id} - no results found')
         continue
 
-    if n_htos is None:
-        print(f'Skipping {dataset_id} - n_htos not set')
-        continue
-
     classifications = pd.read_csv(csv_file, index_col=0)
     classifications.index.name = 'cell_barcode'
     classifications = classifications.reset_index()
     classifications.columns = ['cell_barcode', 'label', 'probability']
 
-    def map_label(label, n=n_htos):
+    def map_label_string(label, n=n_htos):
         if label == 0 or label == n + 2:
             return 'negative'
         elif label == n + 1:
@@ -49,9 +40,28 @@ for dataset_id, n_htos in datasets.items():
         else:
             return 'negative'
 
-    classifications['classification'] = classifications['label'].apply(map_label)
-    classifications.to_csv(f'{output_dir}/classifications.csv', index=False)
+    def map_label_numeric(label, n=n_htos):
+        if label == 0 or label == n + 2:
+            return 0       # negative
+        elif label == n + 1:
+            return 1000    # doublet
+        elif 1 <= label <= n:
+            return label   # singlet - preserve sample index
+        else:
+            return 0
 
+    classifications['classification'] = classifications['label'].apply(map_label_string)
+
+    # save classifications (singlet/doublet/negative)
+    classifications[['cell_barcode', 'classification']].to_csv(
+        f'{output_dir}/classifications.csv', index=False)
+
+    # save numeric assignments for scoring
+    assignments = classifications[['cell_barcode']].copy()
+    assignments['assignment'] = classifications['label'].apply(map_label_numeric)
+    assignments.to_csv(f'{output_dir}/assignments.csv', index=False)
+
+    # save summary counts
     summary = classifications.groupby('classification').size().reset_index(name='n')
     summary['dataset'] = dataset_id
     summary['method'] = 'gmmdemux'

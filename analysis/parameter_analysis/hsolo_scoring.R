@@ -10,8 +10,8 @@ library(tidyverse)
 source('analysis/parameter_analysis/scores.R')
 
 # load ground truth and scoring inputs
-load('analysis/parameter_analysis/mcginnis_ms_scores.RData')
-load('analysis/parameter_analysis/mcginnis_ab_scores.RData')
+load('analysis/parameter_analysis/scores/mcginnis_ms_scores.RData')
+load('analysis/parameter_analysis/scores/mcginnis_ab_scores.RData')
 
 truth_ms <- truth_mcginnis_ms_vireo
 bars_ms <- bars_mcginnis_ms
