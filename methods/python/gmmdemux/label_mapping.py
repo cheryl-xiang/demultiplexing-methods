@@ -1,3 +1,9 @@
+#script to map gmmdemux assignments
+
+#TO RUN:
+#       conda activate demux-py
+#       python3 methods/python/gmmdemux/label_mapping.py
+
 import pandas as pd
 import os
 
@@ -29,6 +35,11 @@ for dataset_id, n_htos in datasets.items():
     classifications.index.name = 'cell_barcode'
     classifications = classifications.reset_index()
     classifications.columns = ['cell_barcode', 'label', 'probability']
+
+    #strip barcode prefixes/suffixes
+    classifications['cell_barcode'] = classifications['cell_barcode'].str.replace(r'\.\d+$', '', regex=True)
+    classifications['cell_barcode'] = classifications['cell_barcode'].str.replace(r'-\d+$', '', regex=True)
+    classifications['cell_barcode'] = classifications['cell_barcode'].str.replace(r'^\d+_', '', regex=True)
 
     def map_label_string(label, n=n_htos):
         if label == 0 or label == n + 2:
