@@ -1,0 +1,5 @@
+"classification","n","dataset","method"
+"doublet",1195,"howitt_batch1_c2","beacon"
+"negative",1,"howitt_batch1_c2","beacon"
+"singlet",11316,"howitt_batch1_c2","beacon"
+"total",12512,"howitt_batch1_c2","beacon"

@@ -1,0 +1,5 @@
+"classification","n","dataset","method"
+"doublet",252,"bar11","beacon"
+"negative",345,"bar11","beacon"
+"singlet",5125,"bar11","beacon"
+"total",5722,"bar11","beacon"
