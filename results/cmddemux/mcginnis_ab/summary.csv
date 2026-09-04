@@ -1,0 +1,5 @@
+"classification","n","dataset","method"
+"doublet",227,"mcginnis_ab","cmddemux"
+"negative",31,"mcginnis_ab","cmddemux"
+"singlet",4901,"mcginnis_ab","cmddemux"
+"total",5159,"mcginnis_ab","cmddemux"

@@ -53,6 +53,9 @@ data.full <- mat
 data <- mat
 neg.cells <- c()
 
+#run and time
+start_time <- proc.time()
+
 #quantile sweeps
 for (round in 1:n_rounds) {
   bar.table_sweep.list <- list()
@@ -114,6 +117,9 @@ if (rescue_threshold > 0) {
   final.calls.rescued <- final.calls
 }
 
+elapsed <- proc.time() - start_time
+runtime <- as.numeric(elapsed['elapsed'])
+
 #reorder rows
 final.calls.rescued <- final.calls.rescued[match(rownames(data.full), names(final.calls.rescued))]
 
@@ -150,5 +156,15 @@ write.csv(summary_counts,
 if (file.exists('Rplots.pdf')) {
   file.rename('Rplots.pdf', paste0('results/demultiplex/', dataset_id, '/Rplots.pdf'))
 }
+
+#save runtime
+runtime_df <- data.frame(
+  dataset = dataset_id,
+  method = 'demultiplex',
+  runtime_seconds = runtime
+)
+write.csv(runtime_df, paste0('results/demultiplex/', dataset_id, '/runtime.csv'), row.names = FALSE)
+message(paste('Runtime:', round(runtime, 2), 'seconds'))
+
 
 print(summary_counts)

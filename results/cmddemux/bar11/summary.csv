@@ -1,0 +1,5 @@
+"classification","n","dataset","method"
+"doublet",286,"bar11","cmddemux"
+"negative",1,"bar11","cmddemux"
+"singlet",5435,"bar11","cmddemux"
+"total",5722,"bar11","cmddemux"

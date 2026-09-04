@@ -1,0 +1,4 @@
+classification,n,dataset,method
+doublet,302,mcginnis_ab,hashsolo
+singlet,4857,mcginnis_ab,hashsolo
+total,5159,mcginnis_ab,hashsolo

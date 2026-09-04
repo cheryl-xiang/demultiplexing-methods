@@ -1,0 +1,5 @@
+"classification","n","dataset","method"
+"doublet",1676,"howitt_capture2","htodemux"
+"negative",3230,"howitt_capture2","htodemux"
+"singlet",9701,"howitt_capture2","htodemux"
+"total",14607,"howitt_capture2","htodemux"

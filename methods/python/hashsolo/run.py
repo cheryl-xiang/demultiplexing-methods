@@ -11,6 +11,7 @@ import anndata
 import pandas as pd
 import scanpy.external as sce
 import os
+import time
 
 #read command line arguments
 dataset_id = sys.argv[1]
@@ -36,12 +37,16 @@ for col in data.columns:
 hashtag_cols = list(data.columns)
 
 #run HashSolo
+start_time = time.time()
 sce.pp.hashsolo(adata, hashtag_cols)
+runtime = time.time() - start_time
 
 #extract classifications
 classifications = adata.obs[['most_likely_hypothesis', 'Classification']].copy()
 classifications.index.name = 'cell_barcode'
 classifications = classifications.reset_index()
+
+os.makedirs(f'results/hashsolo/{dataset_id}', exist_ok=True)
 
 #save sample-specific numeric assignments for scoring
 if barcode_map_file is not None:
@@ -67,7 +72,6 @@ classifications['classification'] = classifications['most_likely_hypothesis'].ap
 classifications = classifications[['cell_barcode', 'classification']]
 
 #save classifications
-os.makedirs(f'results/hashsolo/{dataset_id}', exist_ok=True)
 classifications.to_csv(f'results/hashsolo/{dataset_id}/classifications.csv', index=False)
 
 #save summary counts
@@ -84,5 +88,14 @@ total = pd.DataFrame([{
 
 summary = pd.concat([summary, total], ignore_index=True)
 summary.to_csv(f'results/hashsolo/{dataset_id}/summary.csv', index=False)
+
+# save runtime
+runtime_df = pd.DataFrame([{
+    'dataset': dataset_id,
+    'method': 'hashsolo',
+    'runtime_seconds': runtime
+}])
+runtime_df.to_csv(f'results/hashsolo/{dataset_id}/runtime.csv', index=False)
+print(f'Runtime: {runtime:.2f} seconds')
 
 print(summary)

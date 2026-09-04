@@ -36,11 +36,13 @@ if (switch_transpose) {
   data <- t(as.matrix(data))
 }
 
-print(paste('HTOs:', nrow(data)))
-print(paste('Cells:', ncol(data)))
-
 #run beacon
+start_time <- proc.time()
+
 calls <- beacon_calls(data, params)
+
+elapsed <- proc.time() - start_time
+runtime <- as.numeric(elapsed['elapsed'])
 
 #save assignments
 calls_df <- data.frame(
@@ -67,4 +69,14 @@ totals <- summary_counts %>%
 summary_counts <- bind_rows(summary_counts, totals)
 
 write.csv(summary_counts, paste0('results/beacon/', dataset_id, '/summary.csv'), row.names = FALSE)
+
+#save runtime
+runtime_df <- data.frame(
+  dataset = dataset_id,
+  method = 'beacon',
+  runtime_seconds = runtime
+)
+write.csv(runtime_df, paste0('results/beacon/', dataset_id, '/runtime.csv'), row.names = FALSE)
+message(paste('Runtime:', round(runtime, 2), 'seconds'))
+
 print(summary_counts)

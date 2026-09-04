@@ -33,7 +33,11 @@ if (do_transpose) {
 }
 
 #run HashedDrops
+start_time <- proc.time()
 res <- hashedDrops(mat)
+
+elapsed <- proc.time() - start_time
+runtime <- as.numeric(elapsed['elapsed'])
 
 #get classifications
 classifications <- data.frame(
@@ -72,6 +76,16 @@ summary_counts <- bind_rows(summary_counts, totals)
 write.csv(summary_counts, 
           paste0('results/hasheddrops/', dataset_id, '/summary.csv'), 
           row.names = FALSE)
+
+#save runtime
+runtime_df <- data.frame(
+  dataset = dataset_id,
+  method = 'hasheddrops',
+  runtime_seconds = runtime
+)
+write.csv(runtime_df, paste0('results/hasheddrops/', dataset_id, '/runtime.csv'), row.names = FALSE)
+message(paste('Runtime:', round(runtime, 2), 'seconds'))
+
 
 #move plots to results folder
 if (file.exists('Rplots.pdf')) {

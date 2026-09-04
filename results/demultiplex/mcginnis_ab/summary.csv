@@ -1,0 +1,5 @@
+"classification","n","dataset","method"
+"doublet",760,"mcginnis_ab","demultiplex"
+"negative",1664,"mcginnis_ab","demultiplex"
+"singlet",2735,"mcginnis_ab","demultiplex"
+"total",5159,"mcginnis_ab","demultiplex"

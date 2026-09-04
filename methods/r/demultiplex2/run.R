@@ -33,7 +33,12 @@ if (switch_transpose) {
 }
 
 #run deMULTIplex2
+start_time <- proc.time()
+
 res <- demultiplexTags(data)
+
+elapsed <- proc.time() - start_time
+runtime <- as.numeric(elapsed['elapsed'])
 
 #create output directory
 dir.create(paste0('results/demultiplex2/', dataset_id), recursive = TRUE, showWarnings = FALSE)
@@ -81,6 +86,15 @@ summary_counts <- bind_rows(summary_counts, totals)
 write.csv(summary_counts,
           paste0('results/demultiplex2/', dataset_id, '/summary.csv'),
           row.names = FALSE)
+
+#save runtime
+runtime_df <- data.frame(
+  dataset = dataset_id,
+  method = 'demultiplex2',
+  runtime_seconds = runtime
+)
+write.csv(runtime_df, paste0('results/demultiplex2/', dataset_id, '/runtime.csv'), row.names = FALSE)
+message(paste('Runtime:', round(runtime, 2), 'seconds'))
 
 #move pdfs
 pdf_file <- list.files(pattern = '.*assignment\\.pdf$')

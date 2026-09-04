@@ -32,6 +32,8 @@ if (switch_transpose) {
 mat <- mat[rowSums(mat) > 0, ]
 
 # run BFF_Raw and BFF_Cluster together
+start_time <- proc.time()
+
 res <- tryCatch({
   GenerateCellHashingCalls(
     mat,
@@ -47,6 +49,12 @@ res <- tryCatch({
             paste0('results/bffcluster/', dataset_id, '/error.csv'), row.names = FALSE)
   NULL
 })
+
+elapsed <- proc.time() - start_time
+runtime <- as.numeric(elapsed['elapsed'])
+
+# save runtime to both
+runtime_df <- data.frame(dataset = dataset_id, runtime_seconds = runtime)
 
 print(head(res))
 print(colnames(res))
@@ -121,6 +129,14 @@ summary_cluster <- bind_rows(summary_cluster, totals_cluster)
 write.csv(summary_cluster,
           paste0('results/bffcluster/', dataset_id, '/summary.csv'),
           row.names = FALSE)
+
+#save runtimes
+write.csv(data.frame(runtime_df, method = 'bff_raw'),
+          paste0('results/bffraw/', dataset_id, '/runtime.csv'), row.names = FALSE)
+write.csv(data.frame(runtime_df, method = 'bff_cluster'),
+          paste0('results/bffcluster/', dataset_id, '/runtime.csv'), row.names = FALSE)
+
+message(paste('Runtime:', round(runtime, 2), 'seconds'))
 
 # move plots
 if (file.exists('Rplots.pdf')) {

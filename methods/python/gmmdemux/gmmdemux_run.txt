@@ -5,40 +5,53 @@ conda activate demux-py
 # ---- CELLS AS ROWS ----
 
 #mcginnis_ms
-GMM-demux -c data/mcginnis_ms/hto/GSM4904942_8donor_PBMC_AH_MULTI_matrix.csv Bar9,Bar10,Bar11,Bar12,Bar13,Bar14,Bar15,Bar16 -s results/gmmdemux/mcginnis_ms -rs 42
+mkdir -p results/gmmdemux/mcginnis_ms
+{ time GMM-demux -c data/mcginnis_ms/hto/GSM4904942_8donor_PBMC_AH_MULTI_matrix.csv Bar9,Bar10,Bar11,Bar12,Bar13,Bar14,Bar15,Bar16 -s results/gmmdemux/mcginnis_ms -rs 42 ; } 2>&1 | tee results/gmmdemux/mcginnis_ms/time.txt
 
 #mcginnis_hto
-GMM-demux -c data/mcginnis_hto/hto/GSM4904939_8donor_PBMC_AH_SCMK_matrix.csv Bar1,Bar2,Bar3,Bar4,Bar5,Bar6,Bar7,Bar8 -s results/gmmdemux/mcginnis_hto -rs 42
+mkdir -p results/gmmdemux/mcginnis_hto
+{ time GMM-demux -c data/mcginnis_hto/hto/GSM4904939_8donor_PBMC_AH_SCMK_matrix.csv Bar1,Bar2,Bar3,Bar4,Bar5,Bar6,Bar7,Bar8 -s results/gmmdemux/mcginnis_ab -rs 42 ; } 2>&1 | tee results/gmmdemux/mcginnis_ab/time.txt
 
 #gaublomme
-GMM-demux -c data/gaublomme/hto/barcodes_filtered_gmmdemux.csv S1HuF,S2HuM,S3HuF,S4HuM,S5HuF,S6HuM,S7HuF,S8HuM -s results/gmmdemux/gaublomme -rs 42
+mkdir -p results/gmmdemux/gaublomme
+{ time GMM-demux -c data/gaublomme/hto/barcodes_filtered_gmmdemux.csv S1HuF,S2HuM,S3HuF,S4HuM,S5HuF,S6HuM,S7HuF,S8HuM -s results/gmmdemux/gaublomme -rs 42 ; } 2>&1 | tee results/gmmdemux/gaublomme/time.txt
 
 #bar11
-GMM-demux -c data/ah1/hto/barcodes_matrix_filtered_ah1.csv Bar1,Bar2,Bar3,Bar4,Bar5,Bar6,Bar7,Bar8,Bar9,Bar10,Bar11 -s results/gmmdemux/bar11 -rs 42
+mkdir -p results/gmmdemux/bar11
+{ time GMM-demux -c data/ah1/hto/barcodes_matrix_filtered_ah1.csv Bar1,Bar2,Bar3,Bar4,Bar5,Bar6,Bar7,Bar8,Bar9,Bar10,Bar11 -s results/gmmdemux/bar11 -rs 42 ; } 2>&1 | tee results/gmmdemux/bar11/time.txt
 
 #howitt_b1c1
-GMM-demux -c data/howitt_b1c1/batch1_c1_hto_counts_transpose.csv BAL_01,BAL_02,BAL_03,BAL_04,BAL_05,BAL_06,BAL_07,BAL_08 -s results/gmmdemux/howitt_b1c1 -rs 42
+mkdir -p results/gmmdemux/howitt_batch1_c1
+{ time GMM-demux -c data/howitt_b1c1/batch1_c1_hto_counts_transpose.csv BAL_01,BAL_02,BAL_03,BAL_04,BAL_05,BAL_06,BAL_07,BAL_08 -s results/gmmdemux/howitt_batch1_c1 -rs 42 ; } 2>&1 | tee results/gmmdemux/howitt_batch1_c1/time.txt
 
 #howitt_b1c2
-GMM-demux -c data/howitt_b1c2/batch1_c2_hto_counts_transpose.csv BAL_01,BAL_02,BAL_03,BAL_04,BAL_05,BAL_06,BAL_07,BAL_08 -s results/gmmdemux/howitt_b1c2 -rs 42
+mkdir -p results/gmmdemux/howitt_batch1_c2
+{ time GMM-demux -c data/howitt_b1c2/batch1_c2_hto_counts_transpose.csv BAL_01,BAL_02,BAL_03,BAL_04,BAL_05,BAL_06,BAL_07,BAL_08 -s results/gmmdemux/howitt_batch1_c2 -rs 42 ; } 2>&1 | tee results/gmmdemux/howitt_batch1_c2/time.txt
 
 #howitt_b2c1
-GMM-demux -c data/howitt_b2c1/batch2_c1_hto_counts_transpose.csv BAL_09,BAL_10,BAL_11,BAL_12,BAL_13,BAL_14,BAL_15,BAL_16 -s results/gmmdemux/howitt_b2c1 -rs 42
+mkdir -p results/gmmdemux/howitt_batch2_c1
+{ time GMM-demux -c data/howitt_b2c1/batch2_c1_hto_counts_transpose.csv BAL_09,BAL_10,BAL_11,BAL_12,BAL_13,BAL_14,BAL_15,BAL_16 -s results/gmmdemux/howitt_batch2_c1 -rs 42 ; } 2>&1 | tee results/gmmdemux/howitt_batch2_c1/time.txt
 
 #howitt_b2c2
-GMM-demux -c data/howitt_b2c2/batch2_c2_hto_counts_transpose.csv BAL_09,BAL_10,BAL_11,BAL_12,BAL_13,BAL_14,BAL_15,BAL_16 -s results/gmmdemux/howitt_b2c2 -rs 42
+mkdir -p results/gmmdemux/howitt_batch2_c2
+{ time GMM-demux -c data/howitt_b2c2/batch2_c2_hto_counts_transpose.csv BAL_09,BAL_10,BAL_11,BAL_12,BAL_13,BAL_14,BAL_15,BAL_16 -s results/gmmdemux/howitt_batch2_c2 -rs 42 ; } 2>&1 | tee results/gmmdemux/howitt_batch2_c2/time.txt
 
 #howitt_b3c1
-GMM-demux -c data/howitt_b3c1/batch3_c1_hto_counts_transpose.csv BAL_17,BAL_18,BAL_19,BAL_20,BAL_21,BAL_22,BAL_23,BAL_24 -s results/gmmdemux/howitt_b3c1 -rs 42
+mkdir -p results/gmmdemux/howitt_batch3_c1
+{ time GMM-demux -c data/howitt_b3c1/batch3_c1_hto_counts_transpose.csv BAL_17,BAL_18,BAL_19,BAL_20,BAL_21,BAL_22,BAL_23,BAL_24 -s results/gmmdemux/howitt_batch3_c1 -rs 42 ; } 2>&1 | tee results/gmmdemux/howitt_batch3_c1/time.txt
 
 #howitt_b3c2
-GMM-demux -c data/howitt_b3c2/batch3_c2_hto_counts_transpose.csv BAL_17,BAL_18,BAL_19,BAL_20,BAL_21,BAL_22,BAL_23,BAL_24 -s results/gmmdemux/howitt_b3c2 -rs 42
+mkdir -p results/gmmdemux/howitt_batch3_c2
+{ time GMM-demux -c data/howitt_b3c2/batch3_c2_hto_counts_transpose.csv BAL_17,BAL_18,BAL_19,BAL_20,BAL_21,BAL_22,BAL_23,BAL_24 -s results/gmmdemux/howitt_batch3_c2 -rs 42 ; } 2>&1 | tee results/gmmdemux/howitt_batch3_c2/time.txt
 
 #howitt_cell_cap1
-GMM-demux -c data/howitt_cell_cap1/lmo_counts_capture1_gmmdemux.csv CL_01,CL_02,CL_03 -s results/gmmdemux/howitt_cell_cap1 -rs 42
+mkdir -p results/gmmdemux/howitt_capture1
+{ time GMM-demux -c data/howitt_cell_cap1/lmo_counts_capture1_gmmdemux.csv CL_01,CL_02,CL_03 -s results/gmmdemux/howitt_capture1 -rs 42 ; } 2>&1 | tee results/gmmdemux/howitt_capture1/time.txt
 
 #howitt_cell_cap2
-GMM-demux -c data/howitt_cell_cap2/lmo_counts_capture2_gmmdemux.csv CL_01,CL_02,CL_03 -s results/gmmdemux/howitt_cell_cap2 -rs 42
+mkdir -p results/gmmdemux/howitt_capture2
+{ time GMM-demux -c data/howitt_cell_cap2/lmo_counts_capture2_gmmdemux.csv CL_01,CL_02,CL_03 -s results/gmmdemux/howitt_capture2 -rs 42 ; } 2>&1 | tee results/gmmdemux/howitt_capture2/time.txt
 
 #howitt_cell_cap3
-GMM-demux -c data/howitt_cell_cap3/lmo_counts_capture3_gmmdemux.csv CL_01,CL_02,CL_03 -s results/gmmdemux/howitt_cell_cap3 -rs 42
+mkdir -p results/gmmdemux/howitt_capture3
+{ time GMM-demux -c data/howitt_cell_cap3/lmo_counts_capture3_gmmdemux.csv CL_01,CL_02,CL_03 -s results/gmmdemux/howitt_capture3 -rs 42 ; } 2>&1 | tee results/gmmdemux/howitt_capture3/time.txt

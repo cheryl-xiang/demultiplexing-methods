@@ -1,0 +1,152 @@
+#demultiplex
+Rscript methods/r/demultiplex/run.R mcginnis_ms data/mcginnis_ms/hto/GSM4904942_8donor_PBMC_AH_MULTI_matrix.csv 3 10 8
+Rscript methods/r/demultiplex/run.R mcginnis_ab data/mcginnis_hto/hto/GSM4904939_8donor_PBMC_AH_SCMK_matrix.csv 4 20 8
+Rscript methods/r/demultiplex/run.R bar11 data/ah1/hto/barcodes_matrix_filtered_ah1.csv 5 20
+Rscript methods/r/demultiplex/run.R gaublomme data/gaublomme/hto/barcodes_filtered_gaublomme.csv 3 10 TRUE
+Rscript methods/r/demultiplex/run.R howitt_batch1_c1 data/howitt_b1c1/batch1_c1_hto_counts_howitt.csv 4 10 TRUE
+Rscript methods/r/demultiplex/run.R howitt_batch1_c2 data/howitt_b1c2/batch1_c2_hto_counts_howitt.csv 3 10 TRUE
+Rscript methods/r/demultiplex/run.R howitt_batch2_c1 data/howitt_b2c1/batch2_c1_hto_counts_howitt.csv 4 10 TRUE
+Rscript methods/r/demultiplex/run.R howitt_batch2_c2 data/howitt_b2c2/batch2_c2_hto_counts_howitt.csv 9 30 TRUE
+Rscript methods/r/demultiplex/run.R howitt_batch3_c1 data/howitt_b3c1/batch3_c1_hto_counts_howitt.csv 13 40 TRUE
+Rscript methods/r/demultiplex/run.R howitt_batch3_c2 data/howitt_b3c2/batch3_c2_hto_counts_howitt.csv 4 20 TRUE
+Rscript methods/r/demultiplex/run.R howitt_capture1 data/howitt_cell_cap1/lmo_counts_capture1_howitt_cell_line.csv 10 0 TRUE
+Rscript methods/r/demultiplex/run.R howitt_capture2 data/howitt_cell_cap2/lmo_counts_capture2_howitt_cell_line.csv 10 0 TRUE
+Rscript methods/r/demultiplex/run.R howitt_capture3 data/howitt_cell_cap3/lmo_counts_capture3_howitt_cell_line.csv 3 10 TRUE
+
+
+#demultiplex2
+Rscript methods/r/demultiplex2/run.R mcginnis_ms data/mcginnis_ms/hto/GSM4904942_8donor_PBMC_AH_MULTI_matrix.csv FALSE config/barcode_maps/mcginnis_ms.csv
+Rscript methods/r/demultiplex2/run.R mcginnis_ab data/mcginnis_hto/hto/GSM4904939_8donor_PBMC_AH_SCMK_matrix.csv FALSE config/barcode_maps/mcginnis_ab.csv
+Rscript methods/r/demultiplex2/run.R bar11 data/ah1/hto/barcodes_matrix_filtered_ah1.csv FALSE config/barcode_maps/bar11.csv
+Rscript methods/r/demultiplex2/run.R gaublomme data/gaublomme/hto/barcodes_filtered_gaublomme.csv TRUE config/barcode_maps/gaublomme.csv
+Rscript methods/r/demultiplex2/run.R howitt_batch1_c1 data/howitt_b1c1/batch1_c1_hto_counts_howitt.csv TRUE config/barcode_maps/howitt_batch1.csv
+Rscript methods/r/demultiplex2/run.R howitt_batch1_c2 data/howitt_b1c2/batch1_c2_hto_counts_howitt.csv TRUE config/barcode_maps/howitt_batch1.csv
+Rscript methods/r/demultiplex2/run.R howitt_batch2_c1 data/howitt_b2c1/batch2_c1_hto_counts_howitt.csv TRUE config/barcode_maps/howitt_batch2.csv
+Rscript methods/r/demultiplex2/run.R howitt_batch2_c2 data/howitt_b2c2/batch2_c2_hto_counts_howitt.csv TRUE config/barcode_maps/howitt_batch2.csv
+Rscript methods/r/demultiplex2/run.R howitt_batch3_c1 data/howitt_b3c1/batch3_c1_hto_counts_howitt.csv TRUE config/barcode_maps/howitt_batch3.csv
+Rscript methods/r/demultiplex2/run.R howitt_batch3_c2 data/howitt_b3c2/batch3_c2_hto_counts_howitt.csv TRUE config/barcode_maps/howitt_batch3.csv
+Rscript methods/r/demultiplex2/run.R howitt_capture1 data/howitt_cell_cap1/lmo_counts_capture1_howitt_cell_line.csv TRUE config/barcode_maps/howitt_capture.csv
+Rscript methods/r/demultiplex2/run.R howitt_capture2 data/howitt_cell_cap2/lmo_counts_capture2_howitt_cell_line.csv TRUE config/barcode_maps/howitt_capture.csv
+Rscript methods/r/demultiplex2/run.R howitt_capture3 data/howitt_cell_cap3/lmo_counts_capture3_howitt_cell_line.csv TRUE config/barcode_maps/howitt_capture.csv
+
+
+#beacon
+Rscript methods/r/beacon/run.R mcginnis_ms data/mcginnis_ms/hto/GSM4904942_8donor_PBMC_AH_MULTI_matrix.csv
+Rscript methods/r/beacon/run.R mcginnis_ab data/mcginnis_hto/hto/GSM4904939_8donor_PBMC_AH_SCMK_matrix.csv
+Rscript methods/r/beacon/run.R bar11 data/ah1/hto/barcodes_matrix_filtered_ah1.csv
+Rscript methods/r/beacon/run.R gaublomme data/gaublomme/hto/barcodes_filtered_gaublomme.csv TRUE
+Rscript methods/r/beacon/run.R howitt_batch1_c1 data/howitt_b1c1/batch1_c1_hto_counts_howitt.csv TRUE
+Rscript methods/r/beacon/run.R howitt_batch1_c2 data/howitt_b1c2/batch1_c2_hto_counts_howitt.csv TRUE
+Rscript methods/r/beacon/run.R howitt_batch2_c1 data/howitt_b2c1/batch2_c1_hto_counts_howitt.csv TRUE
+Rscript methods/r/beacon/run.R howitt_batch2_c2 data/howitt_b2c2/batch2_c2_hto_counts_howitt.csv TRUE
+Rscript methods/r/beacon/run.R howitt_batch3_c1 data/howitt_b3c1/batch3_c1_hto_counts_howitt.csv TRUE
+Rscript methods/r/beacon/run.R howitt_batch3_c2 data/howitt_b3c2/batch3_c2_hto_counts_howitt.csv TRUE
+Rscript methods/r/beacon/run.R howitt_capture1 data/howitt_cell_cap1/lmo_counts_capture1_howitt_cell_line.csv TRUE
+Rscript methods/r/beacon/run.R howitt_capture2 data/howitt_cell_cap2/lmo_counts_capture2_howitt_cell_line.csv TRUE
+Rscript methods/r/beacon/run.R howitt_capture3 data/howitt_cell_cap3/lmo_counts_capture3_howitt_cell_line.csv TRUE
+
+#htodemux
+Rscript methods/r/htodemux/run.R mcginnis_ms data/mcginnis_ms/hto/GSM4904942_8donor_PBMC_AH_MULTI_matrix.csv 8
+Rscript methods/r/htodemux/run.R mcginnis_ab data/mcginnis_hto/hto/GSM4904939_8donor_PBMC_AH_SCMK_matrix.csv 8
+Rscript methods/r/htodemux/run.R bar11 data/ah1/hto/barcodes_matrix_filtered_ah1.csv
+Rscript methods/r/htodemux/run.R gaublomme data/gaublomme/hto/barcodes_filtered_gaublomme.csv TRUE
+Rscript methods/r/htodemux/run.R howitt_batch1_c1 data/howitt_b1c1/batch1_c1_hto_counts_howitt.csv TRUE
+Rscript methods/r/htodemux/run.R howitt_batch1_c2 data/howitt_b1c2/batch1_c2_hto_counts_howitt.csv TRUE
+Rscript methods/r/htodemux/run.R howitt_batch2_c1 data/howitt_b2c1/batch2_c1_hto_counts_howitt.csv TRUE
+Rscript methods/r/htodemux/run.R howitt_batch2_c2 data/howitt_b2c2/batch2_c2_hto_counts_howitt.csv TRUE
+Rscript methods/r/htodemux/run.R howitt_batch3_c1 data/howitt_b3c1/batch3_c1_hto_counts_howitt.csv TRUE
+Rscript methods/r/htodemux/run.R howitt_batch3_c2 data/howitt_b3c2/batch3_c2_hto_counts_howitt.csv TRUE
+Rscript methods/r/htodemux/run.R howitt_capture1 data/howitt_cell_cap1/lmo_counts_capture1_howitt_cell_line.csv TRUE
+Rscript methods/r/htodemux/run.R howitt_capture2 data/howitt_cell_cap2/lmo_counts_capture2_howitt_cell_line.csv TRUE
+Rscript methods/r/htodemux/run.R howitt_capture3 data/howitt_cell_cap3/lmo_counts_capture3_howitt_cell_line.csv TRUE
+
+
+#hashsolo
+python3 methods/python/hashsolo/run.py mcginnis_ms data/mcginnis_ms/hto/GSM4904942_8donor_PBMC_AH_MULTI_matrix.csv FALSE config/barcode_maps/mcginnis_ms.csv
+python3 methods/python/hashsolo/run.py mcginnis_ab data/mcginnis_hto/hto/GSM4904939_8donor_PBMC_AH_SCMK_matrix.csv FALSE config/barcode_maps/mcginnis_ab.csv
+python3 methods/python/hashsolo/run.py bar11 data/ah1/hto/barcodes_matrix_filtered_ah1.csv FALSE config/barcode_maps/bar11.csv
+python3 methods/python/hashsolo/run.py gaublomme data/gaublomme/hto/barcodes_filtered_gaublomme.csv TRUE config/barcode_maps/gaublomme.csv
+python3 methods/python/hashsolo/run.py howitt_batch1_c1 data/howitt_b1c1/batch1_c1_hto_counts_howitt.csv TRUE config/barcode_maps/howitt_batch1.csv
+python3 methods/python/hashsolo/run.py howitt_batch1_c2 data/howitt_b1c2/batch1_c2_hto_counts_howitt.csv TRUE config/barcode_maps/howitt_batch1.csv
+python3 methods/python/hashsolo/run.py howitt_batch2_c1 data/howitt_b2c1/batch2_c1_hto_counts_howitt.csv TRUE config/barcode_maps/howitt_batch2.csv
+python3 methods/python/hashsolo/run.py howitt_batch2_c2 data/howitt_b2c2/batch2_c2_hto_counts_howitt.csv TRUE config/barcode_maps/howitt_batch2.csv
+python3 methods/python/hashsolo/run.py howitt_batch3_c1 data/howitt_b3c1/batch3_c1_hto_counts_howitt.csv TRUE config/barcode_maps/howitt_batch3.csv
+python3 methods/python/hashsolo/run.py howitt_batch3_c2 data/howitt_b3c2/batch3_c2_hto_counts_howitt.csv TRUE config/barcode_maps/howitt_batch3.csv
+python3 methods/python/hashsolo/run.py howitt_capture1 data/howitt_cell_cap1/lmo_counts_capture1_howitt_cell_line.csv TRUE config/barcode_maps/howitt_capture.csv
+python3 methods/python/hashsolo/run.py howitt_capture2 data/howitt_cell_cap2/lmo_counts_capture2_howitt_cell_line.csv TRUE config/barcode_maps/howitt_capture.csv
+python3 methods/python/hashsolo/run.py howitt_capture3 data/howitt_cell_cap3/lmo_counts_capture3_howitt_cell_line.csv TRUE config/barcode_maps/howitt_capture.csv
+
+
+
+#hasheddrops
+Rscript methods/r/hasheddrops/run.R mcginnis_ms data/mcginnis_ms/hto/GSM4904942_8donor_PBMC_AH_MULTI_matrix.csv
+Rscript methods/r/hasheddrops/run.R mcginnis_ab data/mcginnis_hto/hto/GSM4904939_8donor_PBMC_AH_SCMK_matrix.csv
+Rscript methods/r/hasheddrops/run.R bar11 data/ah1/hto/barcodes_matrix_filtered_ah1.csv
+Rscript methods/r/hasheddrops/run.R gaublomme data/gaublomme/hto/barcodes_filtered_gaublomme.csv TRUE
+Rscript methods/r/hasheddrops/run.R howitt_batch1_c1 data/howitt_b1c1/batch1_c1_hto_counts_howitt.csv TRUE
+Rscript methods/r/hasheddrops/run.R howitt_batch1_c2 data/howitt_b1c2/batch1_c2_hto_counts_howitt.csv TRUE
+Rscript methods/r/hasheddrops/run.R howitt_batch2_c1 data/howitt_b2c1/batch2_c1_hto_counts_howitt.csv TRUE
+Rscript methods/r/hasheddrops/run.R howitt_batch2_c2 data/howitt_b2c2/batch2_c2_hto_counts_howitt.csv TRUE
+Rscript methods/r/hasheddrops/run.R howitt_batch3_c1 data/howitt_b3c1/batch3_c1_hto_counts_howitt.csv TRUE
+Rscript methods/r/hasheddrops/run.R howitt_batch3_c2 data/howitt_b3c2/batch3_c2_hto_counts_howitt.csv TRUE
+Rscript methods/r/hasheddrops/run.R howitt_capture1 data/howitt_cell_cap1/lmo_counts_capture1_howitt_cell_line.csv TRUE
+Rscript methods/r/hasheddrops/run.R howitt_capture2 data/howitt_cell_cap2/lmo_counts_capture2_howitt_cell_line.csv TRUE
+Rscript methods/r/hasheddrops/run.R howitt_capture3 data/howitt_cell_cap3/lmo_counts_capture3_howitt_cell_line.csv TRUE
+
+
+#bffs
+Rscript methods/r/bff/run.R mcginnis_ms data/mcginnis_ms/hto/GSM4904942_8donor_PBMC_AH_MULTI_matrix.csv
+Rscript methods/r/bff/run.R mcginnis_ab data/mcginnis_hto/hto/GSM4904939_8donor_PBMC_AH_SCMK_matrix.csv
+Rscript methods/r/bff/run.R bar11 data/ah1/hto/barcodes_matrix_filtered_ah1.csv
+Rscript methods/r/bff/run.R gaublomme data/gaublomme/hto/barcodes_filtered_gaublomme.csv TRUE
+Rscript methods/r/bff/run.R howitt_batch1_c1 data/howitt_b1c1/batch1_c1_hto_counts_howitt.csv TRUE
+Rscript methods/r/bff/run.R howitt_batch1_c2 data/howitt_b1c2/batch1_c2_hto_counts_howitt.csv TRUE
+Rscript methods/r/bff/run.R howitt_batch2_c1 data/howitt_b2c1/batch2_c1_hto_counts_howitt.csv TRUE
+Rscript methods/r/bff/run.R howitt_batch2_c2 data/howitt_b2c2/batch2_c2_hto_counts_howitt.csv TRUE
+Rscript methods/r/bff/run.R howitt_batch3_c1 data/howitt_b3c1/batch3_c1_hto_counts_howitt.csv TRUE
+Rscript methods/r/bff/run.R howitt_batch3_c2 data/howitt_b3c2/batch3_c2_hto_counts_howitt.csv TRUE
+Rscript methods/r/bff/run.R howitt_capture1 data/howitt_cell_cap1/lmo_counts_capture1_howitt_cell_line.csv TRUE
+Rscript methods/r/bff/run.R howitt_capture2 data/howitt_cell_cap2/lmo_counts_capture2_howitt_cell_line.csv TRUE
+Rscript methods/r/bff/run.R howitt_capture3 data/howitt_cell_cap3/lmo_counts_capture3_howitt_cell_line.csv TRUE
+
+
+#demuxmix
+Rscript methods/r/demuxmix/run.R mcginnis_ms data/mcginnis_ms/hto/GSM4904942_8donor_PBMC_AH_MULTI_matrix.csv data/mcginnis_ms/rna/
+Rscript methods/r/demuxmix/run.R mcginnis_ab data/mcginnis_hto/hto/GSM4904939_8donor_PBMC_AH_SCMK_matrix.csv data/mcginnis_ms/rna/
+Rscript methods/r/demuxmix/run.R bar11 data/ah1/hto/barcodes_matrix_filtered_ah1.csv data/ah1/rna/filtered_feature_bc_matrix.h5
+Rscript methods/r/demuxmix/run.R gaublomme data/gaublomme/hto/barcodes_filtered_gaublomme.csv data/gaublomme/rna/experiment1_human_st_raw_10x.h5 TRUE
+
+
+#demuxmix naive
+Rscript methods/r/demuxmixnaive/run.R mcginnis_ms data/mcginnis_ms/hto/GSM4904942_8donor_PBMC_AH_MULTI_matrix.csv data/mcginnis_ms/rna/
+Rscript methods/r/demuxmixnaive/run.R mcginnis_ab data/mcginnis_hto/hto/GSM4904939_8donor_PBMC_AH_SCMK_matrix.csv data/mcginnis_ms/rna/
+Rscript methods/r/demuxmixnaive/run.R bar11 data/ah1/hto/barcodes_matrix_filtered_ah1.csv data/ah1/rna/filtered_feature_bc_matrix.h5
+Rscript methods/r/demuxmixnaive/run.R gaublomme data/gaublomme/hto/barcodes_filtered_gaublomme.csv data/gaublomme/rna/experiment1_human_st_raw_10x.h5 TRUE
+Rscript methods/r/demuxmixnaive/run.R howitt_batch1_c1 data/howitt_b1c1/batch1_c1_hto_counts_howitt.csv TRUE
+Rscript methods/r/demuxmixnaive/run.R howitt_batch1_c2 data/howitt_b1c2/batch1_c2_hto_counts_howitt.csv TRUE
+Rscript methods/r/demuxmixnaive/run.R howitt_batch2_c1 data/howitt_b2c1/batch2_c1_hto_counts_howitt.csv TRUE
+Rscript methods/r/demuxmixnaive/run.R howitt_batch2_c2 data/howitt_b2c2/batch2_c2_hto_counts_howitt.csv TRUE
+Rscript methods/r/demuxmixnaive/run.R howitt_batch3_c1 data/howitt_b3c1/batch3_c1_hto_counts_howitt.csv TRUE
+Rscript methods/r/demuxmixnaive/run.R howitt_batch3_c2 data/howitt_b3c2/batch3_c2_hto_counts_howitt.csv TRUE
+Rscript methods/r/demuxmixnaive/run.R howitt_capture1 data/howitt_cell_cap1/lmo_counts_capture1_howitt_cell_line.csv TRUE
+Rscript methods/r/demuxmixnaive/run.R howitt_capture2 data/howitt_cell_cap2/lmo_counts_capture2_howitt_cell_line.csv TRUE
+Rscript methods/r/demuxmixnaive/run.R howitt_capture3 data/howitt_cell_cap3/lmo_counts_capture3_howitt_cell_line.csv TRUE
+
+
+#demuxem
+#only works on bar11 and stoeckius?
+
+#cmddemux
+Rscript methods/r/cmddemux/run.R mcginnis_ms data/mcginnis_ms/hto/GSM4904942_8donor_PBMC_AH_MULTI_matrix.csv FALSE config/barcode_maps/mcginnis_ms.csv
+Rscript methods/r/cmddemux/run.R mcginnis_ab data/mcginnis_hto/hto/GSM4904939_8donor_PBMC_AH_SCMK_matrix.csv FALSE config/barcode_maps/mcginnis_ab.csv
+Rscript methods/r/cmddemux/run.R bar11 data/ah1/hto/barcodes_matrix_filtered_ah1.csv FALSE config/barcode_maps/bar11.csv
+Rscript methods/r/cmddemux/run.R gaublomme data/gaublomme/hto/barcodes_filtered_gaublomme.csv TRUE config/barcode_maps/gaublomme.csv
+Rscript methods/r/cmddemux/run.R howitt_batch1_c1 data/howitt_b1c1/batch1_c1_hto_counts_howitt.csv TRUE config/barcode_maps/howitt_batch1.csv
+Rscript methods/r/cmddemux/run.R howitt_batch1_c2 data/howitt_b1c2/batch1_c2_hto_counts_howitt.csv TRUE config/barcode_maps/howitt_batch1.csv
+Rscript methods/r/cmddemux/run.R howitt_batch2_c1 data/howitt_b2c1/batch2_c1_hto_counts_howitt.csv TRUE config/barcode_maps/howitt_batch2.csv
+Rscript methods/r/cmddemux/run.R howitt_batch2_c2 data/howitt_b2c2/batch2_c2_hto_counts_howitt.csv TRUE config/barcode_maps/howitt_batch2.csv
+Rscript methods/r/cmddemux/run.R howitt_batch3_c1 data/howitt_b3c1/batch3_c1_hto_counts_howitt.csv TRUE config/barcode_maps/howitt_batch3.csv
+Rscript methods/r/cmddemux/run.R howitt_batch3_c2 data/howitt_b3c2/batch3_c2_hto_counts_howitt.csv TRUE config/barcode_maps/howitt_batch3.csv
+Rscript methods/r/cmddemux/run.R howitt_capture1 data/howitt_cell_cap1/lmo_counts_capture1_howitt_cell_line.csv TRUE config/barcode_maps/howitt_capture.csv
+Rscript methods/r/cmddemux/run.R howitt_capture2 data/howitt_cell_cap2/lmo_counts_capture2_howitt_cell_line.csv TRUE config/barcode_maps/howitt_capture.csv
+Rscript methods/r/cmddemux/run.R howitt_capture3 data/howitt_cell_cap3/lmo_counts_capture3_howitt_cell_line.csv TRUE config/barcode_maps/howitt_capture.csv

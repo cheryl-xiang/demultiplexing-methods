@@ -61,8 +61,13 @@ mat <- mat[rowSums(mat) > 0, , drop = FALSE]
 rna_counts <- Matrix::colSums(rna_mat[, common_cells] > 0)
 
 #run demuxmix
+start_time <- proc.time()
 res <- demuxmix(mat, rna = rna_counts)
+elapsed <- proc.time() - start_time
+runtime <- as.numeric(elapsed['elapsed'])
+
 classes <- dmmClassify(res)
+
 
 #get classifications
 classifications <- data.frame(
@@ -93,6 +98,15 @@ summary_counts <- bind_rows(summary_counts, totals)
 write.csv(summary_counts, 
           paste0('results/demuxmix/', dataset_id, '/summary.csv'), 
           row.names = FALSE)
+
+#save runtime
+runtime_df <- data.frame(
+  dataset = dataset_id,
+  method = 'demuxmix',
+  runtime_seconds = runtime
+)
+write.csv(runtime_df, paste0('results/demuxmix/', dataset_id, '/runtime.csv'), row.names = FALSE)
+message(paste('Runtime:', round(runtime, 2), 'seconds'))
 
 #move plots to results folder
 if (file.exists('Rplots.pdf')) {

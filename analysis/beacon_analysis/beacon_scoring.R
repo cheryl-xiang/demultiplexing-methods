@@ -102,7 +102,7 @@ score_assignments <- function(assignments_file, truth, bars, weights, dataset, m
 results <- bind_rows(
   score_assignments('results/beacon/mcginnis_ms/assignments.csv',
                     truth_ms, bars_ms, weights_ms, 'mcginnis_ms', 'beacon'),
-  score_assignments('results/beacon/mcginnis_hto/assignments.csv',
+  score_assignments('results/beacon/mcginnis_ab/assignments.csv',
                     truth_ab, bars_ab, weights_ab, 'mcginnis_ab', 'beacon'),
   score_assignments('results/beacon/bar11/assignments.csv',
                     truth_bar11, bars_bar11, weights_bar11, 'bar11', 'beacon'),

@@ -56,7 +56,11 @@ mat_sparse <- Matrix::Matrix(mat, sparse = TRUE)
 seurat_obj <- CreateSeuratObject(counts = mat_sparse)
 seurat_obj[['HTO']] <- CreateAssayObject(counts = mat_sparse)
 seurat_obj <- NormalizeData(seurat_obj, assay = 'HTO', normalization.method = 'CLR')
+
+start_time <- proc.time()
 res <- HTODemux(seurat_obj, assay = 'HTO', positive.quantile = 0.99, kfunc='clara')
+elapsed <- proc.time() - start_time
+runtime <- as.numeric(elapsed['elapsed'])
 
 classifications <- data.frame(
   cell_barcode = colnames(seurat_obj),
@@ -84,5 +88,14 @@ summary_counts <- bind_rows(summary_counts, totals)
 write.csv(summary_counts,
           paste0('results/htodemux/', dataset_id, '/summary.csv'),
           row.names = FALSE)
+
+#save runtime
+runtime_df <- data.frame(
+  dataset = dataset_id,
+  method = 'htodemux',
+  runtime_seconds = runtime
+)
+write.csv(runtime_df, paste0('results/htodemux/', dataset_id, '/runtime.csv'), row.names = FALSE)
+message(paste('Runtime:', round(runtime, 2), 'seconds'))
 
 print(summary_counts)

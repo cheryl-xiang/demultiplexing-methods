@@ -1,0 +1,5 @@
+"classification","n","dataset","method"
+"doublet",3323,"howitt_batch3_c2","bff_raw"
+"negative",10687,"howitt_batch3_c2","bff_raw"
+"singlet",17065,"howitt_batch3_c2","bff_raw"
+"total",31075,"howitt_batch3_c2","bff_raw"

@@ -1,0 +1,5 @@
+"classification","n","dataset","method"
+"doublet",983,"mcginnis_ab","bff_cluster"
+"negative",5,"mcginnis_ab","bff_cluster"
+"singlet",4171,"mcginnis_ab","bff_cluster"
+"total",5159,"mcginnis_ab","bff_cluster"

@@ -70,7 +70,11 @@ if (!is.null(rna_dir)) {
 mat <- mat[rowSums(mat) > 0, , drop = FALSE]
 
 #run demuxmix naive
+start_time <- proc.time()
 res <- demuxmix(mat, model = 'naive')
+elapsed <- proc.time() - start_time
+runtime <- as.numeric(elapsed['elapsed'])
+
 classes <- dmmClassify(res)
 
 #get classifications
@@ -103,8 +107,20 @@ write.csv(summary_counts,
           paste0('results/demuxmixnaive/', dataset_id, '/summary.csv'),
           row.names = FALSE)
 
+#save runtime
+runtime_df <- data.frame(
+  dataset = dataset_id,
+  method = 'demuxmixnaive',
+  runtime_seconds = runtime
+)
+write.csv(runtime_df, paste0('results/demuxmixnaive/', dataset_id, '/runtime.csv'), row.names = FALSE)
+message(paste('Runtime:', round(runtime, 2), 'seconds'))
+
+
+#move plots to results folder
 if (file.exists('Rplots.pdf')) {
   file.rename('Rplots.pdf', paste0('results/demuxmixnaive/', dataset_id, '/Rplots.pdf'))
 }
+
 
 print(summary_counts)

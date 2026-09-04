@@ -1,0 +1,7 @@
+==============================GMM-Demux Initialization==============================
+Confidence threshold: 0.8
+Output directory: SSD_mtx
+Simplified classification result is stored in results/gmmdemux/mcginnis_ms
+MSM-free droplets are stored in folder SSD_mtx 
+
+GMM-demux -c data/mcginnis_ms/hto/GSM4904942_8donor_PBMC_AH_MULTI_matrix.csv   1.92s user 0.50s system 82% cpu 2.939 total

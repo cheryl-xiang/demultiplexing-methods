@@ -1,0 +1,7 @@
+==============================GMM-Demux Initialization==============================
+Confidence threshold: 0.8
+Output directory: SSD_mtx
+Simplified classification result is stored in results/gmmdemux/howitt_batch1_c2
+MSM-free droplets are stored in folder SSD_mtx 
+
+GMM-demux -c data/howitt_b1c2/batch1_c2_hto_counts_transpose.csv  -s  -rs 42  2.05s user 0.38s system 101% cpu 2.405 total

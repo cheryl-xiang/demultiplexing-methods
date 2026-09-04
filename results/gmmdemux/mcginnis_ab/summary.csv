@@ -1,0 +1,5 @@
+classification,n,dataset,method
+doublet,4257,mcginnis_ab,gmmdemux
+negative,867,mcginnis_ab,gmmdemux
+singlet,35,mcginnis_ab,gmmdemux
+total,5159,mcginnis_ab,gmmdemux

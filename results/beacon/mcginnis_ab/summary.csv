@@ -1,0 +1,5 @@
+"classification","n","dataset","method"
+"doublet",205,"mcginnis_ab","beacon"
+"negative",111,"mcginnis_ab","beacon"
+"singlet",4843,"mcginnis_ab","beacon"
+"total",5159,"mcginnis_ab","beacon"

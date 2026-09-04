@@ -1,0 +1,7 @@
+==============================GMM-Demux Initialization==============================
+Confidence threshold: 0.8
+Output directory: SSD_mtx
+Simplified classification result is stored in results/gmmdemux/gaublomme
+MSM-free droplets are stored in folder SSD_mtx 
+
+GMM-demux -c data/gaublomme/hto/barcodes_filtered_gmmdemux.csv  -s  -rs 42  1.73s user 0.35s system 98% cpu 2.115 total
