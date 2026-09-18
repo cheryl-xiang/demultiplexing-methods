@@ -1,0 +1,5 @@
+classification,n,dataset,method
+doublet,299,mcginnis_ms,demuxtags
+negative,206,mcginnis_ms,demuxtags
+singlet,4654,mcginnis_ms,demuxtags
+total,5159,mcginnis_ms,demuxtags

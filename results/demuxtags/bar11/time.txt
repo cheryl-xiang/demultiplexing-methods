@@ -1,0 +1,29 @@
+Loaded 5722 barcodes and 11 features
+===== Initial model means: =====
+Bar1:	36.496293	3271.037007
+Bar2:	51.266800	4257.247967
+Bar3:	105.249873	4696.194056
+Bar4:	139.670391	3729.642898
+Bar5:	119.516316	8185.194252
+Bar6:	47.838033	3460.470301
+Bar7:	92.595655	6641.196448
+Bar8:	48.387104	9203.850204
+Bar9:	80.701764	10404.998981
+Bar10:	149.441158	12528.781495
+Bar11:	21.741141	2878.041446
+Checking for label dropout...
+Making preliminary assignments...
+===== Ambient tag profile: =====
+Bar1:	0.039642
+Bar2:	0.056922
+Bar3:	0.115882
+Bar4:	0.154858
+Bar5:	0.136778
+Bar6:	0.054478
+Bar7:	0.103839
+Bar8:	0.054346
+Bar9:	0.091541
+Bar10:	0.167518
+Bar11:	0.024195
+Assigning cells...
+methods/demuxtags/demuxtags_files/demux_tags -B  -F  -M  -o   74.53s user 0.15s system 99% cpu 1:14.87 total

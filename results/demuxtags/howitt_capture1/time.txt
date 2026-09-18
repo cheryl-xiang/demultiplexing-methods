@@ -1,0 +1,13 @@
+Loaded 16598 barcodes and 3 features
+===== Initial model means: =====
+CL_01:	12.735247	538.421302
+CL_02:	38.120045	252.961972
+CL_03:	13.241503	72.111071
+Checking for label dropout...
+Making preliminary assignments...
+===== Ambient tag profile: =====
+CL_01:	0.195429
+CL_02:	0.617069
+CL_03:	0.187503
+Assigning cells...
+methods/demuxtags/demuxtags_files/demux_tags -B  -F  -M  -o   12.60s user 0.05s system 99% cpu 12.701 total

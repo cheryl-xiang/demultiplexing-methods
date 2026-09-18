@@ -1,0 +1,5 @@
+classification,n,dataset,method
+doublet,2643,howitt_capture1,demuxtags
+negative,3,howitt_capture1,demuxtags
+singlet,13952,howitt_capture1,demuxtags
+total,16598,howitt_capture1,demuxtags

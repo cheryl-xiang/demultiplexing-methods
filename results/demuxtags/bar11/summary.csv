@@ -1,0 +1,5 @@
+classification,n,dataset,method
+doublet,466,bar11,demuxtags
+negative,1,bar11,demuxtags
+singlet,5255,bar11,demuxtags
+total,5722,bar11,demuxtags

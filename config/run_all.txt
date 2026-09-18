@@ -77,7 +77,6 @@ python3 methods/python/hashsolo/run.py howitt_capture2 data/howitt_cell_cap2/lmo
 python3 methods/python/hashsolo/run.py howitt_capture3 data/howitt_cell_cap3/lmo_counts_capture3_howitt_cell_line.csv TRUE config/barcode_maps/howitt_capture.csv
 
 
-
 #hasheddrops
 Rscript methods/r/hasheddrops/run.R mcginnis_ms data/mcginnis_ms/hto/GSM4904942_8donor_PBMC_AH_MULTI_matrix.csv
 Rscript methods/r/hasheddrops/run.R mcginnis_ab data/mcginnis_hto/hto/GSM4904939_8donor_PBMC_AH_SCMK_matrix.csv
@@ -135,6 +134,7 @@ Rscript methods/r/demuxmixnaive/run.R howitt_capture3 data/howitt_cell_cap3/lmo_
 
 #demuxem
 #only works on bar11 and stoeckius?
+
 
 #cmddemux
 Rscript methods/r/cmddemux/run.R mcginnis_ms data/mcginnis_ms/hto/GSM4904942_8donor_PBMC_AH_MULTI_matrix.csv FALSE config/barcode_maps/mcginnis_ms.csv

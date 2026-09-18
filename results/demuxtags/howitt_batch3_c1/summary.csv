@@ -1,0 +1,4 @@
+classification,n,dataset,method
+doublet,8747,howitt_batch3_c1,demuxtags
+singlet,22484,howitt_batch3_c1,demuxtags
+total,31231,howitt_batch3_c1,demuxtags

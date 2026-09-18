@@ -1,0 +1,3 @@
+[submodule "methods/external/cellbouncer"]
+	path = methods/external/cellbouncer
+	url = https://github.com/nkschaefer/cellbouncer.git

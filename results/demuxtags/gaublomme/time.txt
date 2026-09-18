@@ -1,0 +1,23 @@
+Loaded 2508 barcodes and 8 features
+===== Initial model means: =====
+S1HuF:	37.850099	3493.267633
+S2HuM:	32.939244	2664.221234
+S3HuF:	24.945213	2609.486468
+S4HuM:	27.766937	1487.355544
+S5HuF:	7.337593	691.508698
+S6HuM:	12.369356	1069.657788
+S7HuF:	47.598360	1164.317014
+S8HuM:	29.793296	2033.764257
+Checking for label dropout...
+Making preliminary assignments...
+===== Ambient tag profile: =====
+S1HuF:	0.172667
+S2HuM:	0.149647
+S3HuF:	0.113570
+S4HuM:	0.125390
+S5HuF:	0.031613
+S6HuM:	0.054094
+S7HuF:	0.220025
+S8HuM:	0.132994
+Assigning cells...
+methods/demuxtags/demuxtags_files/demux_tags -B  -F  -M  -o   25.56s user 0.04s system 99% cpu 25.617 total

@@ -1,0 +1,120 @@
+#To Run: Paste entire script into terminal
+
+conda activate demuxtags
+
+#mcginnis_ms
+rm -f results/demuxtags/mcginnis_ms/mcginnis_ms.counts
+mkdir -p results/demuxtags/mcginnis_ms
+{ time methods/demuxtags/demuxtags_files/demux_tags \
+    -B data/mcginnis_ms/hto/mex/barcodes.tsv \
+    -F data/mcginnis_ms/hto/mex/features.tsv \
+    -M data/mcginnis_ms/hto/mex/matrix.mtx \
+    -o results/demuxtags/mcginnis_ms/mcginnis_ms ; } 2>&1 | tee results/demuxtags/mcginnis_ms/time.txt
+
+#mcginnis_ab
+rm -f results/demuxtags/mcginnis_ab/mcginnis_ab.counts
+mkdir -p results/demuxtags/mcginnis_ab
+{ time methods/demuxtags/demuxtags_files/demux_tags \
+    -B data/mcginnis_ab/hto/mex/barcodes.tsv \
+    -F data/mcginnis_ab/hto/mex/features.tsv \
+    -M data/mcginnis_ab/hto/mex/matrix.mtx \
+    -o results/demuxtags/mcginnis_ab/mcginnis_ab ; } 2>&1 | tee results/demuxtags/mcginnis_ab/time.txt
+
+#bar11
+rm -f results/demuxtags/bar11/bar11.counts
+mkdir -p results/demuxtags/bar11
+{ time methods/demuxtags/demuxtags_files/demux_tags \
+    -B data/bar11/hto/mex/barcodes.tsv \
+    -F data/bar11/hto/mex/features.tsv \
+    -M data/bar11/hto/mex/matrix.mtx \
+    -o results/demuxtags/bar11/bar11 ; } 2>&1 | tee results/demuxtags/bar11/time.txt
+
+#gaublomme
+rm -f results/demuxtags/gaublomme/gaublomme.counts
+mkdir -p results/demuxtags/gaublomme
+{ time methods/demuxtags/demuxtags_files/demux_tags \
+    -B data/gaublomme/hto/mex/barcodes.tsv \
+    -F data/gaublomme/hto/mex/features.tsv \
+    -M data/gaublomme/hto/mex/matrix.mtx \
+    -o results/demuxtags/gaublomme/gaublomme ; } 2>&1 | tee results/demuxtags/gaublomme/time.txt
+
+#howitt_batch1_c1
+rm -f results/demuxtags/howitt_batch1_c1/howitt_batch1_c1.counts
+mkdir -p results/demuxtags/howitt_batch1_c1
+{ time methods/demuxtags/demuxtags_files/demux_tags \
+    -B data/howitt_batch1_c1/hto/mex/barcodes.tsv \
+    -F data/howitt_batch1_c1/hto/mex/features.tsv \
+    -M data/howitt_batch1_c1/hto/mex/matrix.mtx \
+    -o results/demuxtags/howitt_batch1_c1/howitt_batch1_c1 ; } 2>&1 | tee results/demuxtags/howitt_batch1_c1/time.txt
+
+#howitt_batch1_c2
+rm -f results/demuxtags/howitt_batch1_c2/howitt_batch1_c2.counts
+mkdir -p results/demuxtags/howitt_batch1_c2
+{ time methods/demuxtags/demuxtags_files/demux_tags \
+    -B data/howitt_batch1_c2/hto/mex/barcodes.tsv \
+    -F data/howitt_batch1_c2/hto/mex/features.tsv \
+    -M data/howitt_batch1_c2/hto/mex/matrix.mtx \
+    -o results/demuxtags/howitt_batch1_c2/howitt_batch1_c2 ; } 2>&1 | tee results/demuxtags/howitt_batch1_c2/time.txt
+
+#howitt_batch2_c1
+rm -f results/demuxtags/howitt_batch2_c1/howitt_batch2_c1.counts
+mkdir -p results/demuxtags/howitt_batch2_c1
+{ time methods/demuxtags/demuxtags_files/demux_tags \
+    -B data/howitt_batch2_c1/hto/mex/barcodes.tsv \
+    -F data/howitt_batch2_c1/hto/mex/features.tsv \
+    -M data/howitt_batch2_c1/hto/mex/matrix.mtx \
+    -o results/demuxtags/howitt_batch2_c1/howitt_batch2_c1 ; } 2>&1 | tee results/demuxtags/howitt_batch2_c1/time.txt
+
+#howitt_batch2_c2
+rm -f results/demuxtags/howitt_batch2_c2/howitt_batch2_c2.counts
+mkdir -p results/demuxtags/howitt_batch2_c2
+{ time methods/demuxtags/demuxtags_files/demux_tags \
+    -B data/howitt_batch2_c2/hto/mex/barcodes.tsv \
+    -F data/howitt_batch2_c2/hto/mex/features.tsv \
+    -M data/howitt_batch2_c2/hto/mex/matrix.mtx \
+    -o results/demuxtags/howitt_batch2_c2/howitt_batch2_c2 ; } 2>&1 | tee results/demuxtags/howitt_batch2_c2/time.txt
+
+#howitt_batch3_c1
+rm -f results/demuxtags/howitt_batch3_c1/howitt_batch3_c1.counts
+mkdir -p results/demuxtags/howitt_batch3_c1
+{ time methods/demuxtags/demuxtags_files/demux_tags \
+    -B data/howitt_batch3_c1/hto/mex/barcodes.tsv \
+    -F data/howitt_batch3_c1/hto/mex/features.tsv \
+    -M data/howitt_batch3_c1/hto/mex/matrix.mtx \
+    -o results/demuxtags/howitt_batch3_c1/howitt_batch3_c1 ; } 2>&1 | tee results/demuxtags/howitt_batch3_c1/time.txt
+
+#howitt_batch3_c2
+rm -f results/demuxtags/howitt_batch3_c2/howitt_batch3_c2.counts
+mkdir -p results/demuxtags/howitt_batch3_c2
+{ time methods/demuxtags/demuxtags_files/demux_tags \
+    -B data/howitt_batch3_c2/hto/mex/barcodes.tsv \
+    -F data/howitt_batch3_c2/hto/mex/features.tsv \
+    -M data/howitt_batch3_c2/hto/mex/matrix.mtx \
+    -o results/demuxtags/howitt_batch3_c2/howitt_batch3_c2 ; } 2>&1 | tee results/demuxtags/howitt_batch3_c2/time.txt
+
+#howitt_capture1
+rm -f results/demuxtags/howitt_capture1/howitt_capture1.counts
+mkdir -p results/demuxtags/howitt_capture1
+{ time methods/demuxtags/demuxtags_files/demux_tags \
+    -B data/howitt_capture1/hto/mex/barcodes.tsv \
+    -F data/howitt_capture1/hto/mex/features.tsv \
+    -M data/howitt_capture1/hto/mex/matrix.mtx \
+    -o results/demuxtags/howitt_capture1/howitt_capture1 ; } 2>&1 | tee results/demuxtags/howitt_capture1/time.txt
+
+#howitt_capture2
+rm -f results/demuxtags/howitt_capture2/howitt_capture2.counts
+mkdir -p results/demuxtags/howitt_capture2
+{ time methods/demuxtags/demuxtags_files/demux_tags \
+    -B data/howitt_capture2/hto/mex/barcodes.tsv \
+    -F data/howitt_capture2/hto/mex/features.tsv \
+    -M data/howitt_capture2/hto/mex/matrix.mtx \
+    -o results/demuxtags/howitt_capture2/howitt_capture2 ; } 2>&1 | tee results/demuxtags/howitt_capture2/time.txt
+
+#howitt_capture3
+rm -f results/demuxtags/howitt_capture3/howitt_capture3.counts
+mkdir -p results/demuxtags/howitt_capture3
+{ time methods/demuxtags/demuxtags_files/demux_tags \
+    -B data/howitt_capture3/hto/mex/barcodes.tsv \
+    -F data/howitt_capture3/hto/mex/features.tsv \
+    -M data/howitt_capture3/hto/mex/matrix.mtx \
+    -o results/demuxtags/howitt_capture3/howitt_capture3 ; } 2>&1 | tee results/demuxtags/howitt_capture3/time.txt
