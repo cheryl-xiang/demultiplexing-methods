@@ -1,0 +1,5 @@
+"classification","n","dataset","method"
+"doublet",454,"mcginnis_ab","hasheddrops"
+"negative",3558,"mcginnis_ab","hasheddrops"
+"singlet",1147,"mcginnis_ab","hasheddrops"
+"total",5159,"mcginnis_ab","hasheddrops"

@@ -6,8 +6,8 @@ CL_03:	14.395457	86.852748
 Checking for label dropout...
 Making preliminary assignments...
 ===== Ambient tag profile: =====
-CL_01:	0.388284
-CL_02:	0.169768
-CL_03:	0.441948
+CL_01:	0.384783
+CL_02:	0.173118
+CL_03:	0.442099
 Assigning cells...
-methods/demuxtags/demuxtags_files/demux_tags -B  -F  -M  -o   11.18s user 0.04s system 99% cpu 11.258 total
+methods/demuxtags/demuxtags_files/demux_tags -B  -F  -M  -o   11.28s user 0.04s system 99% cpu 11.370 total

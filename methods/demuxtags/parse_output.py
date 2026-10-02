@@ -22,6 +22,12 @@ barcode_maps = {
     'howitt_capture1': {'CL_01': 1, 'CL_02': 2, 'CL_03': 3},
     'howitt_capture2': {'CL_01': 1, 'CL_02': 2, 'CL_03': 3},
     'howitt_capture3': {'CL_01': 1, 'CL_02': 2, 'CL_03': 3},
+    'cook_mix1': {f'Bar{i}': i for i in range(1, 97)},
+    'cook_mix2': {f'Bar{i}': i for i in range(1, 97)},
+    'cook_mix3a': {f'Bar{i}': i for i in range(1, 97)},
+    'cook_mix3b': {f'Bar{i}': i for i in range(1, 97)},
+    'cook_mix4a': {f'Bar{i}': i for i in range(1, 97)},
+    'cook_mix4b': {f'Bar{i}': i for i in range(1, 97)},
 }
 
 datasets = list(barcode_maps.keys())
@@ -42,9 +48,9 @@ for dataset_id in datasets:
     barcode_lookup = barcode_maps[dataset_id]
 
     # map to numeric assignments
-    def map_assignment(row):
+    def map_assignment(row, lookup=barcode_lookup):
         if row['type'] == 'S':
-            return barcode_lookup.get(row['identity'], None)
+            return lookup.get(row['identity'], None)
         elif row['type'] in ['D', 'M']:
             return 1000
         else:
@@ -98,12 +104,19 @@ for dataset_id in datasets:
     if os.path.exists(time_file):
         with open(time_file, 'r') as f:
             content = f.read()
+
+        # try bash real time format first (e.g. real 5m3.21s)
         match = re.search(r'real\s+(\d+)m([\d.]+)s', content)
         if match:
             runtime = int(match.group(1)) * 60 + float(match.group(2))
         else:
-            match = re.search(r'([\d.]+)\s+total', content)
-            runtime = float(match.group(1)) if match else None
+            # zsh format: X.XXs user ... H:MM:SS.XX total
+            match = re.search(r'([\d.]+)s user', content)
+            if match:
+                runtime = float(match.group(1))
+            else:
+                print(f'{dataset_id}: could not parse time format')
+                runtime = None
 
         if runtime is not None:
             runtime_df = pd.DataFrame([{
@@ -113,6 +126,8 @@ for dataset_id in datasets:
             }])
             runtime_df.to_csv(f'{output_dir}/runtime.csv', index=False)
             print(f'{dataset_id} runtime: {runtime:.2f} seconds')
+    else:
+        print(f'{dataset_id}: no time file found')
 
     print(f'{dataset_id}:')
     print(summary)

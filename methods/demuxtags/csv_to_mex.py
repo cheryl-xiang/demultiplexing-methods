@@ -25,6 +25,12 @@ datasets = {
     'howitt_capture1': ('data/howitt_cell_cap1/lmo_counts_capture1_howitt_cell_line.csv', True),
     'howitt_capture2': ('data/howitt_cell_cap2/lmo_counts_capture2_howitt_cell_line.csv', True),
     'howitt_capture3': ('data/howitt_cell_cap3/lmo_counts_capture3_howitt_cell_line.csv', True),
+    'cook_mix1' : ('data/cook_mix1/GSE147405_TimeCourse_Mix1_barcode_counts_cook.csv', False),
+    'cook_mix2' : ('data/cook_mix2/GSE147405_TimeCourse_Mix2_barcode_counts_cook.csv', False),
+    'cook_mix3a' : ('data/cook_mix3a/GSE147405_TimeCourse_Mix3a_barcode_counts_cook.csv',False),
+    'cook_mix3b' : ('data/cook_mix3b/GSE147405_TimeCourse_Mix3b_barcode_counts_cook.csv',False),
+    'cook_mix4a' : ('data/cook_mix4a/GSE147405_TimeCourse_Mix4a_barcode_counts_cook.csv',False),
+    'cook_mix4b' : ('data/cook_mix4b/GSE147405_TimeCourse_Mix4b_barcode_counts_cook.csv',False),
 }
 
 for dataset_id, (input_file, switch_transpose) in datasets.items():

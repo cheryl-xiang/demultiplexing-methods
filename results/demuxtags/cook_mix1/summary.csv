@@ -1,0 +1,4 @@
+classification,n,dataset,method
+doublet,5168,cook_mix1,demuxtags
+singlet,7489,cook_mix1,demuxtags
+total,12657,cook_mix1,demuxtags

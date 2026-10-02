@@ -22,6 +22,8 @@ bar20 data/bar20/barcodes_filtered_bar20.csv 3 20 all
 
 
 
+
+
 ---- BARCODES AS ROWS ---- (switch transposing) 
 gaublomme data/gaublomme/hto/barcodes_filtered_gaublomme.csv data/gaublomme/rna/experiment1_human_st_raw_10x.h5 3 10 all TRUE
 howitt_batch1_c1 data/howitt_b1c1/batch1_c1_hto_counts_howitt.csv 4 10 all TRUE

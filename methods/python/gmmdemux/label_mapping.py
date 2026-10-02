@@ -97,7 +97,8 @@ for dataset_id, n_htos in datasets.items():
             seconds = float(match.group(2))
             runtime = minutes * 60 + seconds
         else:
-            match = re.search(r'([\d.]+)\s+total', content)
+            # zsh format: X.XXs user ... H:MM:SS.XX total
+            match = re.search(r'([\d.]+)s user', content)
             if match:
                 runtime = float(match.group(1))
             else:

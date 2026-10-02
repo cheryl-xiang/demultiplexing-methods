@@ -1,7 +1,7 @@
 # script to run CMDdemux
 
 # to run in terminal:
-#    (1) conda activate demux-r
+#    (1) conda activate demux-cmd
 #    (2) Rscript methods/r/cmddemux/run.R dataset data/dataset/hto/file_name.csv [switch_transpose] [barcode_map]
 #    switch_transpose: TRUE to switch default transposing behavior (e.g. gaublomme)
 #    barcode_map: optional csv with columns 'barcode' and 'index' for numeric assignment

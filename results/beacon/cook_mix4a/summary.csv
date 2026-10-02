@@ -1,0 +1,5 @@
+"classification","n","dataset","method"
+"doublet",1591,"cook_mix4a","beacon"
+"negative",27,"cook_mix4a","beacon"
+"singlet",12826,"cook_mix4a","beacon"
+"total",14444,"cook_mix4a","beacon"

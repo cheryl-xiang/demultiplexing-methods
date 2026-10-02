@@ -118,3 +118,57 @@ mkdir -p results/demuxtags/howitt_capture3
     -F data/howitt_capture3/hto/mex/features.tsv \
     -M data/howitt_capture3/hto/mex/matrix.mtx \
     -o results/demuxtags/howitt_capture3/howitt_capture3 ; } 2>&1 | tee results/demuxtags/howitt_capture3/time.txt
+
+#cook_mix1
+rm -f results/demuxtags/cook_mix1/cook_mix1.counts
+mkdir -p results/demuxtags/cook_mix1
+{ time methods/demuxtags/demuxtags_files/demux_tags \
+    -B data/cook_mix1/hto/mex/barcodes.tsv \
+    -F data/cook_mix1/hto/mex/features.tsv \
+    -M data/cook_mix1/hto/mex/matrix.mtx \
+    -o results/demuxtags/cook_mix1/cook_mix1 ; } 2>&1 | tee results/demuxtags/cook_mix1/time.txt
+
+#cook_mix2
+rm -f results/demuxtags/cook_mix2/cook_mix2.counts
+mkdir -p results/demuxtags/cook_mix2
+{ time methods/demuxtags/demuxtags_files/demux_tags \
+    -B data/cook_mix2/hto/mex/barcodes.tsv \
+    -F data/cook_mix2/hto/mex/features.tsv \
+    -M data/cook_mix2/hto/mex/matrix.mtx \
+    -o results/demuxtags/cook_mix2/cook_mix2 ; } 2>&1 | tee results/demuxtags/cook_mix2/time.txt
+
+#cook_mix3a
+rm -f results/demuxtags/cook_mix3a/cook_mix3a.counts
+mkdir -p results/demuxtags/cook_mix3a
+{ time methods/demuxtags/demuxtags_files/demux_tags \
+    -B data/cook_mix3a/hto/mex/barcodes.tsv \
+    -F data/cook_mix3a/hto/mex/features.tsv \
+    -M data/cook_mix3a/hto/mex/matrix.mtx \
+    -o results/demuxtags/cook_mix3a/cook_mix3a ; } 2>&1 | tee results/demuxtags/cook_mix3a/time.txt
+
+#cook_mix3b
+rm -f results/demuxtags/cook_mix3b/cook_mix3b.counts
+mkdir -p results/demuxtags/cook_mix3b
+{ time methods/demuxtags/demuxtags_files/demux_tags \
+    -B data/cook_mix3b/hto/mex/barcodes.tsv \
+    -F data/cook_mix3b/hto/mex/features.tsv \
+    -M data/cook_mix3b/hto/mex/matrix.mtx \
+    -o results/demuxtags/cook_mix3b/cook_mix3b ; } 2>&1 | tee results/demuxtags/cook_mix3b/time.txt
+
+#cook_mix4a
+rm -f results/demuxtags/cook_mix4a/cook_mix4a.counts
+mkdir -p results/demuxtags/cook_mix4a
+{ time methods/demuxtags/demuxtags_files/demux_tags \
+    -B data/cook_mix4a/hto/mex/barcodes.tsv \
+    -F data/cook_mix4a/hto/mex/features.tsv \
+    -M data/cook_mix4a/hto/mex/matrix.mtx \
+    -o results/demuxtags/cook_mix4a/cook_mix4a ; } 2>&1 | tee results/demuxtags/cook_mix4a/time.txt
+
+#cook_mixb
+rm -f results/demuxtags/cook_mix4b/cook_mix4b.counts
+mkdir -p results/demuxtags/cook_mix4b
+{ time methods/demuxtags/demuxtags_files/demux_tags \
+    -B data/cook_mix4b/hto/mex/barcodes.tsv \
+    -F data/cook_mix4b/hto/mex/features.tsv \
+    -M data/cook_mix4b/hto/mex/matrix.mtx \
+    -o results/demuxtags/cook_mix4b/cook_mix4b ; } 2>&1 | tee results/demuxtags/cook_mix4b/time.txt
